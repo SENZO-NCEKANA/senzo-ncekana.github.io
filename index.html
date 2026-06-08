@@ -25,11 +25,44 @@
 </head>
 
 <body>
-  <!-- ================= AURORA BACKGROUND ================= -->
-  <div class="aurora" aria-hidden="true">
-    <span class="aurora-blob aurora-blob--1"></span>
-    <span class="aurora-blob aurora-blob--2"></span>
-    <span class="aurora-blob aurora-blob--3"></span>
+  <!-- ================= BACKGROUND (blueprint / schematic) ================= -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop-grid"></div>
+    <svg class="backdrop-schematic" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <!-- rings -->
+        <circle cx="185" cy="155" r="70" opacity="0.10"/>
+        <circle cx="1380" cy="130" r="96" opacity="0.08"/>
+        <circle cx="1490" cy="610" r="120" opacity="0.06"/>
+        <circle cx="120" cy="815" r="140" opacity="0.06"/>
+        <circle cx="815" cy="915" r="58" opacity="0.09"/>
+        <circle cx="700" cy="120" r="28" opacity="0.12"/>
+        <circle cx="1150" cy="560" r="46" opacity="0.07"/>
+        <!-- no-entry (slashed circles) -->
+        <g opacity="0.12"><circle cx="300" cy="520" r="44"/><line x1="269" y1="551" x2="331" y2="489"/></g>
+        <g opacity="0.10"><circle cx="1185" cy="395" r="34"/><line x1="1161" y1="419" x2="1209" y2="371"/></g>
+        <g opacity="0.09"><circle cx="560" cy="725" r="40"/><line x1="532" y1="753" x2="588" y2="697"/></g>
+        <!-- triangles -->
+        <polygon points="1085,760 1128,832 1042,832" opacity="0.10"/>
+        <polygon points="430,295 460,345 400,345" opacity="0.08"/>
+        <!-- crosshairs / target -->
+        <g opacity="0.13" stroke-width="1.2">
+          <path d="M975 235 v30 M960 250 h30"/>
+          <path d="M1305 875 v26 M1292 888 h26"/>
+          <path d="M245 440 v26 M232 453 h26"/>
+        </g>
+        <circle cx="975" cy="250" r="11" opacity="0.10"/>
+      </g>
+      <g fill="currentColor">
+        <circle cx="430" cy="120" r="2.2" opacity="0.16"/>
+        <circle cx="980" cy="640" r="2.2" opacity="0.14"/>
+        <circle cx="1300" cy="300" r="2.2" opacity="0.16"/>
+        <circle cx="160" cy="600" r="2.2" opacity="0.14"/>
+        <circle cx="720" cy="430" r="2.2" opacity="0.12"/>
+        <circle cx="1440" cy="860" r="2.2" opacity="0.14"/>
+        <circle cx="600" cy="200" r="2.2" opacity="0.12"/>
+      </g>
+    </svg>
   </div>
 
   <!-- ================= HEADER ================= -->

@@ -954,9 +954,9 @@
 }
 
 /* =========================================================
-   AURORA BACKGROUND (soft drifting glow blobs)
+   BACKGROUND (blueprint / schematic: faint grid + line shapes)
 ========================================================= */
-.aurora {
+.backdrop {
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -964,61 +964,32 @@
   pointer-events: none;
 }
 
-.aurora-blob {
+.backdrop-grid {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.45;
-  will-change: transform;
+  inset: -2px;
+  background-image:
+    linear-gradient(to right, rgba(125, 165, 225, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(125, 165, 225, 0.05) 1px, transparent 1px);
+  background-size: 54px 54px;
 }
 
-.aurora-blob--1 {
-  width: 46vmax;
-  height: 46vmax;
-  top: -14vmax;
-  left: -10vmax;
-  background: radial-gradient(circle, var(--accent), transparent 70%);
-  animation: aurora-1 24s ease-in-out infinite alternate;
+.backdrop-schematic {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #7da5e1;
 }
 
-.aurora-blob--2 {
-  width: 40vmax;
-  height: 40vmax;
-  right: -8vmax;
-  bottom: -16vmax;
-  background: radial-gradient(circle, #2ea8ff, transparent 70%);
-  opacity: 0.38;
-  animation: aurora-2 28s ease-in-out infinite alternate;
+[data-theme="light"] .backdrop-grid {
+  background-image:
+    linear-gradient(to right, rgba(40, 80, 140, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(40, 80, 140, 0.06) 1px, transparent 1px);
 }
 
-.aurora-blob--3 {
-  width: 34vmax;
-  height: 34vmax;
-  top: 26vh;
-  left: 36vw;
-  background: radial-gradient(circle, var(--accent), transparent 72%);
-  opacity: 0.26;
-  animation: aurora-3 32s ease-in-out infinite alternate;
-}
-
-[data-theme="light"] .aurora-blob { opacity: 0.16; }
-[data-theme="light"] .aurora-blob--3 { opacity: 0.1; }
-
-@keyframes aurora-1 {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(7vw, 6vh) scale(1.15); }
-}
-@keyframes aurora-2 {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(-6vw, -5vh) scale(1.12); }
-}
-@keyframes aurora-3 {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(5vw, -7vh) scale(1.2); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aurora-blob { animation: none; }
+[data-theme="light"] .backdrop-schematic {
+  color: #2b4a73;
+  opacity: 0.55;
 }
 
 .project-card.editing {
