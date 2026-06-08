@@ -47,5 +47,5 @@ This repo is named `senzo-ncekana.github.io`, so GitHub serves it at the root UR
 | `index.html` | Page markup |
 | `styles.css` | Styles and theme tokens |
 | `script.js` | Theme toggle, mobile menu, project rendering, contact form, scroll reveal |
-| `Senzo Ncekana - CV.pdf` | Downloadable résumé |
-| `IMG-*.jpg`, `Screenshot *.png` | Photos |
+| `Senzo_Ncekana_CV_New.pdf` | Downloadable résumé |
+| `hero.jpg`, `avatar.jpg` | Photos (optimised for web) |
