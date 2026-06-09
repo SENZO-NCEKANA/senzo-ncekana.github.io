@@ -1,6 +1,6 @@
 # Senzo Ncekana — Portfolio
 
-Personal portfolio site for **Senzo Ncekana** — AI/ML Engineer & Data Scientist based in Johannesburg, South Africa.
+Personal portfolio site for **Senzo Ncekana** — AI/ML Engineer & Data Analyst based in Johannesburg, South Africa.
 
 🔗 **Live site:** https://senzo-ncekana.github.io
 
