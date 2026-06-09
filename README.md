@@ -48,4 +48,5 @@ This repo is named `senzo-ncekana.github.io`, so GitHub serves it at the root UR
 | `styles.css` | Styles and theme tokens |
 | `script.js` | Theme toggle, mobile menu, project rendering, contact form, scroll reveal |
 | `Senzo_Ncekana_CV_New.pdf` | Downloadable résumé |
-| `hero.jpg`, `avatar.jpg` | Photos (optimised for web) |
+| `hero.jpg` | Hero photo (optimised for web) |
+| `logo.svg` | Header logo / favicon (stylised "S" + node monogram) |
