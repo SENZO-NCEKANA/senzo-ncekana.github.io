@@ -1,383 +1,851 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Senzo Ncekana – AI/ML Engineer & Data Analyst</title>
-  <meta name="description" content="Senzo Ncekana — AI/ML Engineer & Data Analyst based in Johannesburg, South Africa. Building practical AI systems and turning complex data into decision-ready insight, with a strong focus on data integrity, risk, and compliance." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Senzo Ncekana · AI Engineer — Agentic AI, LLMs &amp; Backend Systems</title>
+<meta name="description" content="Senzo Ncekana — AI Engineer in Johannesburg building agentic assistants, RAG pipelines and the Python backends behind them. LangChain, OpenAI, Gemini, FastAPI, Django, Docker.">
+<link rel="canonical" href="https://senzo-ncekana.github.io/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23141210'/></svg>">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<!-- Link previews. A portfolio shared into a LinkedIn message or a WhatsApp
+     thread with no og:image previews as a bare URL, which is the single most
+     common place a job-hunting site loses its first impression. -->
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://senzo-ncekana.github.io/">
+<meta property="og:title" content="Senzo Ncekana — AI Engineer">
+<meta property="og:description" content="Agentic assistants, RAG pipelines, and the Python backends behind them. Johannesburg, South Africa.">
+<meta property="og:image" content="https://senzo-ncekana.github.io/og-image.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Senzo Ncekana — AI Engineer, Agentic AI, LLMs and Backend Systems">
+<meta property="profile:first_name" content="Senzo">
+<meta property="profile:last_name" content="Ncekana">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Senzo Ncekana — AI Engineer">
+<meta name="twitter:description" content="Agentic assistants, RAG pipelines, and the Python backends behind them.">
+<meta name="twitter:image" content="https://senzo-ncekana.github.io/og-image.png">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/svg+xml" href="logo.svg" />
-  <script>
-    (function(){
-      var s=localStorage.getItem('portfolio-theme');
-      var d=window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var t=s==='light'||s==='dark'?s:(d?'dark':'light');
-      document.documentElement.setAttribute('data-theme',t);
-    })();
-  </script>
+<!-- Structured data, every field taken from the CV. Nothing inferred. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Senzo Ncekana",
+  "jobTitle": "AI Engineer",
+  "email": "mailto:senzo.ncekana1@gmail.com",
+  "telephone": "+27699159102",
+  "url": "https://senzo-ncekana.github.io/",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Parktown, Johannesburg",
+    "addressRegion": "Gauteng",
+    "addressCountry": "ZA"
+  },
+  "sameAs": [
+    "https://github.com/SENZO-NCEKANA",
+    "https://www.linkedin.com/in/nelson-ncekana-4026a1241"
+  ],
+  "knowsAbout": [
+    "Agentic AI", "Large Language Models", "LangChain", "Retrieval-Augmented Generation",
+    "Vector search", "Python", "FastAPI", "Django", "PostgreSQL", "Docker",
+    "Machine learning", "Natural language processing"
+  ],
+  "alumniOf": [
+    { "@type": "EducationalOrganization", "name": "HyperionDev" },
+    { "@type": "EducationalOrganization", "name": "Nelson Mandela University" }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  /* ============================ TOKENS ============================
+     Six roles, one accent hue. Paper ground: a printed monograph, not a dark
+     premium-minimal page. Cobalt reads clinical and professional — explicitly
+     not cream-and-brass, not the violet-to-blue AI gradient. */
+  :root {
+    --sc-canvas:     #F4F2ED;
+    --sc-surface:    #E7E3DA;
+    --sc-ink:        #141210;
+    --sc-ink-soft:   #5C554A;
+    --sc-accent:     #1A46C4;   /* 6.91:1 on paper, 6.04:1 on stone */
+    --sc-accent-ink: #F4F2ED;
+    --sc-font-display: "Archivo", system-ui, sans-serif;
+    --sc-font-text:    "Source Serif 4", Georgia, serif;
+  }
+
+  .ground--stone { background: var(--sc-surface); }
+  /* A full-bleed ground change inside a section, so a chapter can have its own
+     ground without needing its own act. Breaks out of the section's inline
+     padding rather than fighting it. */
+  .band { padding-block: var(--sc-section); margin-top: var(--sc-section); }
+
+  /* Dark colophon plate. A page that hard-cuts between light and dark grounds
+     cannot clear 4.5:1 on both with one accent stop, so it carries the
+     documented one-hue/two-lightness escape.
+     The background MUST be a literal: custom properties resolve at
+     computed-value time, so `background: var(--sc-ink)` here would pick up the
+     REDEFINED light value below and paint light on light at 1:1.
+     `color` is restated because it is inherited as a computed value — changing
+     the token alone leaves the text at the body's ink and fails silently. */
+  .ground--ink {
+    background: #141210;
+    --sc-ink:      #F4F2ED;   /* 16.70:1 */
+    --sc-ink-soft: #A9A296;   /*  7.38:1 */
+    --sc-accent:   #7E9CFF;   /*  7.20:1 — second stop of the one hue */
+    color: var(--sc-ink);
+  }
+
+  /* ---------------- folio: editorial nav + a permanent way out ----------------
+     Chaptered editorial forbids a fixed marketing bar. A folio in the margin is
+     what it prescribes instead. A recruiter still needs the CV reachable from
+     any scroll position, so the folio carries one link and nothing else. */
+  .folio {
+    position: fixed; z-index: 30; top: var(--sc-6); left: var(--sc-6); right: var(--sc-6);
+    display: flex; gap: var(--sc-5); align-items: baseline; justify-content: space-between;
+    font-family: var(--sc-font-display);
+    font-size: .72rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--sc-ink-soft);
+    pointer-events: none;
+  }
+  .folio__chapter { display: flex; gap: .7rem; align-items: baseline; min-width: 0; }
+  .folio__num { font-variant-numeric: tabular-nums; color: var(--sc-accent); }
+  .folio__rule { width: clamp(1rem, 4vw, 3rem); height: 1px; background: currentColor; opacity: .5; flex: none; }
+  .folio__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .folio__cv {
+    pointer-events: auto; color: var(--sc-ink); text-decoration: none;
+    border-bottom: 1px solid var(--sc-accent); padding-bottom: .15rem; flex: none;
+  }
+  .folio__cv:hover, .folio__cv:focus-visible { color: var(--sc-accent); }
+  /* On the dark plate the folio inverts with the ground. Driven by a class from
+     JS rather than mix-blend-mode, which is fragile and untestable. */
+  .folio.is-dark { color: #A9A296; }
+  .folio.is-dark .folio__num { color: #7E9CFF; }
+  .folio.is-dark .folio__cv { color: #F4F2ED; border-bottom-color: #7E9CFF; }
+  @media (max-width: 700px) {
+    .folio { top: var(--sc-4); left: var(--sc-4); right: var(--sc-4); font-size: .6rem; }
+    .folio__title { display: none; }
+  }
+
+  /* ---------------- shared furniture ---------------- */
+  .chapter-mark {
+    font-family: var(--sc-font-display);
+    font-size: .74rem; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--sc-accent); margin: 0;
+  }
+  .chapter-title {
+    font-family: var(--sc-font-display); font-weight: 600;
+    font-size: clamp(1.8rem, 4.2vw, 3rem);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: var(--sc-5) 0 0; text-wrap: balance; color: var(--sc-ink);
+  }
+  .prose {
+    font-family: var(--sc-font-text);
+    font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+    line-height: 1.62; max-width: 62ch; color: var(--sc-ink-soft); text-wrap: pretty;
+  }
+  .prose + .prose { margin-top: var(--sc-4); }
+  .prose strong { color: var(--sc-ink); font-weight: 600; }
+
+  /* ---------------- 00 · the hero, unmistakable ----------------
+     A recruiter scanning for twenty seconds must get name, role, location and
+     a way to reach him without scrolling. Everything clever waits its turn. */
+  .hero { min-height: 100svh; display: flex; align-items: center; padding-block: var(--sc-9) var(--sc-8); }
+  .hero__inner { width: 100%; display: grid; gap: var(--sc-8);
+                 grid-template-columns: minmax(0, 1.55fr) minmax(0, .85fr); align-items: center; }
+  .hero__name {
+    font-family: var(--sc-font-display); font-weight: 700;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: .98; letter-spacing: -0.03em; margin: 0; color: var(--sc-ink);
+  }
+  .hero__role {
+    font-family: var(--sc-font-display); font-weight: 600;
+    font-size: clamp(.86rem, 1.5vw, 1.02rem);
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--sc-accent); margin: var(--sc-5) 0 0; text-wrap: balance;
+  }
+  .hero__summary {
+    font-family: var(--sc-font-text);
+    font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+    line-height: 1.58; max-width: 52ch; color: var(--sc-ink-soft);
+    margin: var(--sc-6) 0 0; text-wrap: pretty;
+  }
+  .hero__summary strong { color: var(--sc-ink); font-weight: 600; }
+  .hero__where {
+    margin: var(--sc-6) 0 0; font-family: var(--sc-font-display);
+    font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft);
+  }
+  .hero__actions { margin-top: var(--sc-7); display: flex; flex-wrap: wrap; gap: .7rem 1.4rem; align-items: center; }
+  .action {
+    font-family: var(--sc-font-display); font-size: .78rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+    color: var(--sc-ink); border-bottom: 2px solid var(--sc-accent);
+    padding-bottom: .2rem;
+  }
+  .action:hover, .action:focus-visible { color: var(--sc-accent); }
+  .action--quiet { border-bottom-color: color-mix(in oklab, var(--sc-ink) 28%, transparent); color: var(--sc-ink-soft); }
+  .action--quiet:hover, .action--quiet:focus-visible { color: var(--sc-ink); border-bottom-color: var(--sc-accent); }
+  .hero__portrait { max-width: 22rem; justify-self: end; width: 100%; }
+  .hero__portrait img { width: 100%; height: auto; display: block; }
+  @media (max-width: 900px) {
+    .hero__inner { grid-template-columns: 1fr; gap: var(--sc-7); }
+    .hero__portrait { max-width: 14rem; justify-self: start; order: -1; }
+  }
+  /* taste.md: step the hero down a rung on a phone or the desktop floor wraps
+     the headline to six lines. */
+  @media (max-width: 700px) { .hero__name { font-size: clamp(2.1rem, 11vw, 2.9rem); } }
+
+  /* ---------------- 01 · what I build ---------------- */
+  .pillars { display: grid; gap: var(--sc-6); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin-top: var(--sc-7); }
+  .pillar { border-top: 2px solid var(--sc-accent); padding-top: var(--sc-4); }
+  .pillar h3 {
+    font-family: var(--sc-font-display); font-weight: 600;
+    font-size: clamp(1.05rem, 1.6vw, 1.24rem); line-height: 1.25;
+    margin: 0; color: var(--sc-ink);
+  }
+  .pillar p {
+    font-family: var(--sc-font-text); font-size: .99rem; line-height: 1.55;
+    color: var(--sc-ink-soft); margin: .7rem 0 0; text-wrap: pretty;
+  }
+  .pillar__stack {
+    margin-top: .9rem; font-family: var(--sc-font-display);
+    font-size: .68rem; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--sc-ink-soft); display: flex; flex-wrap: wrap; gap: .25rem .8rem;
+  }
+
+  /* ================= SIGNATURE MOVE: the look-alike test ================= */
+  .lasa { display: grid; place-items: center; min-height: 100svh; padding: var(--sc-7) 0; }
+  .lasa__inner { width: 100%; max-width: var(--sc-maxw); padding-inline: var(--sc-gutter); }
+  .lasa__pair { display: grid; gap: clamp(.4rem, 1.6vw, 1.1rem); justify-items: center; margin-top: var(--sc-6); }
+  .lasa__word {
+    font-family: var(--sc-font-display); font-weight: 500;
+    font-size: clamp(1.9rem, 8vw, 5.8rem);
+    line-height: 1.02; letter-spacing: -0.015em; white-space: nowrap; display: flex;
+  }
+  .lasa__ch { display: inline-block; will-change: transform; }
+  /* 40%, not more. At 62% the receded glyphs measured 2.42:1 — below even the
+     3:1 large-text floor — and the reader must still read the whole name for
+     the comparison to mean anything. 40% measures 4.68:1. The harness grades a
+     cue element whole, not the spans inside it, so it did not catch this. */
+  .lasa__ch[data-lasa="same"] {
+    color: color-mix(in oklab, var(--sc-ink) calc(100% - var(--lasa, 0) * 40%), var(--sc-canvas));
+  }
+  .lasa__ch[data-lasa="diff"] {
+    color: color-mix(in oklab, var(--sc-ink), var(--sc-accent) calc(var(--lasa, 0) * 100%));
+    font-weight: calc(500 + var(--lasa, 0) * 200);
+    transform: translateY(calc(var(--lasa, 0) * var(--lasa-dir, -1) * .34em));
+  }
+  .lasa__word--b .lasa__ch[data-lasa="diff"] { --lasa-dir: 1; }
+  .lasa__gloss {
+    margin-top: clamp(1.1rem, 3.4vw, 2.2rem);
+    display: grid; gap: .45rem; justify-items: center; text-align: center;
+    font-family: var(--sc-font-display);
+    font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sc-ink-soft);
+  }
+  .lasa__gloss b { color: var(--sc-ink); font-weight: 600; }
+  .lasa__caption {
+    margin-top: clamp(1.2rem, 3.4vw, 2.2rem);
+    max-width: 56ch; margin-inline: auto; text-align: center;
+    font-family: var(--sc-font-text);
+    font-size: clamp(1rem, 1.4vw, 1.16rem); line-height: 1.6;
+    color: var(--sc-ink-soft); text-wrap: pretty;
+  }
+  .lasa__caption b { color: var(--sc-ink); font-weight: 600; }
+
+  /* ---------------- lead figure into the peak ---------------- */
+  .lead-figure { margin: var(--sc-9) auto 0; max-width: 46rem; padding-inline: var(--sc-gutter); }
+  .lead-figure img { width: 100%; height: auto; display: block; }
+  .lead-figure figcaption {
+    margin-top: var(--sc-4);
+    font-family: var(--sc-font-text);
+    font-size: clamp(.95rem, 1.2vw, 1.06rem); line-height: 1.55;
+    color: var(--sc-ink-soft); max-width: 44ch; text-wrap: pretty;
+  }
+
+  /* ---------------- the record ---------------- */
+  .record { margin-top: var(--sc-7); }
+  .post {
+    display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+    gap: var(--sc-4) var(--sc-7); padding-block: var(--sc-6);
+    border-top: 1px solid color-mix(in oklab, var(--sc-ink) 15%, transparent);
+  }
+  .post__meta { font-family: var(--sc-font-display); }
+  .post__date {
+    font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--sc-accent); font-variant-numeric: tabular-nums; font-weight: 600; margin: 0;
+  }
+  .post__org { margin: .5rem 0 0; font-size: .95rem; font-weight: 600; color: var(--sc-ink); line-height: 1.3; }
+  .post__role { margin: .25rem 0 0; font-size: .82rem; color: var(--sc-ink-soft); }
+  .post__body ul { margin: 0; padding-left: 1.05em; }
+  .post__body li {
+    font-family: var(--sc-font-text);
+    font-size: clamp(.97rem, 1.15vw, 1.06rem); line-height: 1.56;
+    color: var(--sc-ink-soft); margin: 0 0 .65rem; text-wrap: pretty;
+  }
+  .post__body li::marker { color: color-mix(in oklab, var(--sc-ink) 35%, transparent); }
+  @media (max-width: 800px) { .post { grid-template-columns: 1fr; gap: var(--sc-3); } }
+
+  /* ---------------- the catalogue: an index, never a card grid ---------------- */
+  .catalogue { margin-top: var(--sc-7); }
+  .entry {
+    display: grid; grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 12rem);
+    gap: var(--sc-3) var(--sc-6); align-items: start; padding-block: var(--sc-6);
+    border-top: 1px solid color-mix(in oklab, var(--sc-ink) 15%, transparent);
+  }
+  .entry__mark {
+    font-family: var(--sc-font-display); font-weight: 700; font-size: .8rem;
+    letter-spacing: .08em; color: var(--sc-accent); padding-top: .2rem; margin: 0;
+  }
+  .entry__title {
+    font-family: var(--sc-font-display); font-weight: 600;
+    font-size: clamp(1.04rem, 1.6vw, 1.28rem); line-height: 1.25;
+    margin: 0; color: var(--sc-ink); text-wrap: balance;
+  }
+  .entry__desc {
+    font-family: var(--sc-font-text); font-size: clamp(.96rem, 1.12vw, 1.03rem);
+    line-height: 1.55; color: var(--sc-ink-soft); margin: .55rem 0 0; max-width: 60ch; text-wrap: pretty;
+  }
+  .entry__tags {
+    font-family: var(--sc-font-display); font-size: .67rem; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--sc-ink-soft); margin: .8rem 0 0;
+    display: flex; flex-wrap: wrap; gap: .25rem .85rem;
+  }
+  .entry__link {
+    font-family: var(--sc-font-display); font-size: .72rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--sc-accent);
+    text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: .1rem;
+    justify-self: start; white-space: nowrap;
+  }
+  .entry__link:hover, .entry__link:focus-visible { color: var(--sc-ink); }
+  .entry__status {
+    font-family: var(--sc-font-display); font-size: .67rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft);
+    display: inline-flex; align-items: center; gap: .45rem; white-space: nowrap;
+  }
+  .entry__status::before { content: ""; width: .4rem; height: .4rem; border-radius: 50%; background: var(--sc-accent); flex: none; }
+  @media (max-width: 880px) {
+    .entry { grid-template-columns: 2.4rem minmax(0, 1fr); }
+    .entry__link, .entry__status { grid-column: 2; }
+  }
+
+  /* ---------------- skills + certifications ---------------- */
+  .cols { margin-top: var(--sc-7); display: grid; gap: var(--sc-7);
+          grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+  .cols h3 {
+    font-family: var(--sc-font-display); font-size: .7rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--sc-accent); margin: 0 0 .75rem;
+  }
+  .cols p, .cols li {
+    font-family: var(--sc-font-text); font-size: .98rem; line-height: 1.55; color: var(--sc-ink-soft);
+  }
+  .cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+  .cols li b { color: var(--sc-ink); font-weight: 600; display: block; font-family: var(--sc-font-display); font-size: .88rem; }
+  .cols li span { font-size: .82rem; }
+
+  .figures { display: flex; flex-wrap: wrap; gap: var(--sc-7); margin-top: var(--sc-6); }
+  .fig { font-family: var(--sc-font-display); }
+  .fig__n {
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 700; line-height: 1;
+    color: var(--sc-ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+  }
+  .fig__l { margin-top: .5rem; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sc-ink-soft); max-width: 15ch; }
+
+  /* ---------------- colophon ---------------- */
+  .colophon { min-height: 100svh; display: flex; align-items: center; padding-block: var(--sc-9); }
+  .running {
+    font-family: var(--sc-font-text);
+    font-size: clamp(1.3rem, 3.2vw, 2.2rem);
+    line-height: 1.45; max-width: 32ch; margin: var(--sc-5) 0 0;
+    color: var(--sc-ink); text-wrap: pretty;
+  }
+  /* The close is a line of running text, not a CTA island: editorial forbids a
+     magnetic button, and it is the wrong ending for a page that spent its
+     length being a document. */
+  .running a { color: var(--sc-accent); text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: .05em; }
+  .running a:hover, .running a:focus-visible { color: var(--sc-ink); }
+  .masthead {
+    margin-top: var(--sc-8); display: grid; gap: var(--sc-5);
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    font-family: var(--sc-font-display); font-size: .76rem; letter-spacing: .05em;
+    padding-top: var(--sc-5); border-top: 1px solid color-mix(in oklab, var(--sc-ink) 22%, transparent);
+  }
+  .masthead dt { text-transform: uppercase; color: var(--sc-ink-soft); font-size: .64rem; letter-spacing: .14em; }
+  .masthead dd { margin: .5rem 0 0; color: var(--sc-ink); overflow-wrap: anywhere; }
+  .masthead a { color: var(--sc-ink); text-decoration: none; border-bottom: 1px solid color-mix(in oklab, var(--sc-ink) 40%, transparent); }
+  .masthead a:hover, .masthead a:focus-visible { color: var(--sc-accent); border-bottom-color: currentColor; }
+  .smallprint { margin-top: var(--sc-7); font-family: var(--sc-font-display); font-size: .66rem; letter-spacing: .1em; color: var(--sc-ink-soft); }
+
+  :where(a):focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; border-radius: 2px; }
+
+  @media (max-width: 700px) {
+    .lasa__word { font-size: clamp(1.5rem, 11vw, 2.5rem); }
+    .running { font-size: clamp(1.15rem, 6vw, 1.55rem); }
+  }
+  /* Reduced motion keeps the MEANING: no travel, but the distinction still
+     resolves, because the distinction is the entire point of the act. */
+  @media (prefers-reduced-motion: reduce) { .lasa__ch[data-lasa="diff"] { transform: none; } }
+</style>
 </head>
-
 <body>
-  <!-- ================= BACKGROUND (blueprint / schematic) ================= -->
-  <div class="backdrop" aria-hidden="true">
-    <div class="backdrop-grid"></div>
-    <svg class="backdrop-schematic" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" stroke="currentColor" stroke-width="1.4">
-        <!-- rings -->
-        <circle cx="185" cy="155" r="70" opacity="0.10"/>
-        <circle cx="1380" cy="130" r="96" opacity="0.08"/>
-        <circle cx="1490" cy="610" r="120" opacity="0.06"/>
-        <circle cx="120" cy="815" r="140" opacity="0.06"/>
-        <circle cx="815" cy="915" r="58" opacity="0.09"/>
-        <circle cx="700" cy="120" r="28" opacity="0.12"/>
-        <circle cx="1150" cy="560" r="46" opacity="0.07"/>
-        <!-- no-entry (slashed circles) -->
-        <g opacity="0.12"><circle cx="300" cy="520" r="44"/><line x1="269" y1="551" x2="331" y2="489"/></g>
-        <g opacity="0.10"><circle cx="1185" cy="395" r="34"/><line x1="1161" y1="419" x2="1209" y2="371"/></g>
-        <g opacity="0.09"><circle cx="560" cy="725" r="40"/><line x1="532" y1="753" x2="588" y2="697"/></g>
-        <!-- triangles -->
-        <polygon points="1085,760 1128,832 1042,832" opacity="0.10"/>
-        <polygon points="430,295 460,345 400,345" opacity="0.08"/>
-        <!-- crosshairs / target -->
-        <g opacity="0.13" stroke-width="1.2">
-          <path d="M975 235 v30 M960 250 h30"/>
-          <path d="M1305 875 v26 M1292 888 h26"/>
-          <path d="M245 440 v26 M232 453 h26"/>
-        </g>
-        <circle cx="975" cy="250" r="11" opacity="0.10"/>
-      </g>
-      <g fill="currentColor">
-        <circle cx="430" cy="120" r="2.2" opacity="0.16"/>
-        <circle cx="980" cy="640" r="2.2" opacity="0.14"/>
-        <circle cx="1300" cy="300" r="2.2" opacity="0.16"/>
-        <circle cx="160" cy="600" r="2.2" opacity="0.14"/>
-        <circle cx="720" cy="430" r="2.2" opacity="0.12"/>
-        <circle cx="1440" cy="860" r="2.2" opacity="0.14"/>
-        <circle cx="600" cy="200" r="2.2" opacity="0.12"/>
-      </g>
-    </svg>
-  </div>
 
-  <!-- ================= HEADER ================= -->
-  <header>
-    <div class="container header-bar">
-      <a href="#home" class="header-logo" aria-label="Home">
-        <img
-          src="logo.svg"
-          alt="Senzo Ncekana — home"
-          class="header-logo-mark"
-        />
-      </a>
-      <nav class="nav" role="navigation" aria-label="Primary">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          type="button"
-          aria-label="Toggle dark mode"
-        >
-          <span class="theme-icon-sun" aria-hidden="true">☀</span>
-          <span class="theme-icon-moon" aria-hidden="true">🌙</span>
-        </button>
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-        type="button"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="mobileMenu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      </div>
-    </div>
+<span data-sc-progress></span>
 
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <button class="mobile-close" type="button" aria-label="Close menu">×</button>
-      <div class="mobile-links">
-        <a class="mobile-link" href="#home">Home</a>
-        <a class="mobile-link" href="#about">About</a>
-        <a class="mobile-link" href="#skills">Skills</a>
-        <a class="mobile-link" href="#experience">Experience</a>
-        <a class="mobile-link" href="#projects">Projects</a>
-        <a class="mobile-link" href="#contact">Contact</a>
-      </div>
-    </div>
-  </header>
+<div class="folio" id="folio">
+  <span class="folio__chapter">
+    <span class="folio__num" id="folioNum">00</span>
+    <span class="folio__rule"></span>
+    <span class="folio__title" id="folioTitle">Senzo Ncekana</span>
+  </span>
+  <a class="folio__cv" href="cv_preview.pdf" download="Senzo Ncekana - CV.pdf">Download CV</a>
+</div>
 
-  <!-- ================= MAIN ================= -->
-  <main id="home">
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-      <div class="hero-avatar-wrap">
-        <img
-          src="hero.jpg"
-          alt="Portrait of Senzo"
-          class="hero-avatar"
-        />
-      </div>
-      <h1 class="hero-title">
-        Hi, I’m <span>Senzo</span>
-      </h1>
-      <div class="hero-role" id="roleText">AI/ML Engineer · Data Analyst</div>
-      <p class="hero-desc">
-        I build practical AI systems and turn complex, multi-source data into decision-ready insight — blending machine learning, NLP, and analytics with a strong focus on accuracy, risk, and compliance. 3+ years in regulated healthcare, now expanding into banking and financial services. Based in Johannesburg, South Africa.
-      </p>
+<main id="top">
 
-      <div class="hero-social">
-        <a
-          class="social-icon"
-          href="https://github.com/SENZO-NCEKANA"
-          aria-label="GitHub"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.63-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.93.85.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.13 0-1.13.39-2.05 1.03-2.77-.1-.26-.45-1.31.1-2.74 0 0 .84-.28 2.75 1.06a9.24 9.24 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.9-1.34 2.74-1.06 2.74-1.06.55 1.43.2 2.48.1 2.74.64.72 1.03 1.64 1.03 2.77 0 4-2.34 4.86-4.58 5.11.36.33.68.98.68 1.98 0 1.43-.01 2.58-.01 2.94 0 .27.18.6.69.49 3.96-1.36 6.82-5.2 6.82-9.73C22 6.58 17.52 2 12 2z" />
-          </svg>
-        </a>
-        <a
-          class="social-icon"
-          href="https://www.linkedin.com/in/nelson-ncekana-4026a1241"
-          aria-label="LinkedIn"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
-          </svg>
-        </a>
-        <a class="social-icon" href="mailto:senzo.ncekana1@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
-          </svg>
-        </a>
-      </div>
-
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-outline">
-          Contact Me
-          <span class="btn-icon">✉</span>
-        </a>
-        <a href="cv_preview.pdf" class="btn btn-primary" download="Senzo Ncekana - CV.pdf">
-          Resume
-          <span class="btn-icon">⇩</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section id="about" class="container reveal">
-      <div class="card">
-        <p class="eyebrow">About</p>
-        <h2>From the dispensary to AI &amp; data</h2>
-        <p>
-          I’m an AI/ML engineer and data analyst with a clinical foundation — a certified Pharmacy Technician with 3+ years in regulated healthcare. That background shapes how I work: a focus on data integrity, control, and systems people can actually trust — the same discipline that risk, audit, and compliance work demands.
-        </p>
-        <p style="margin-top: 14px;">
-          On the engineering side, I built PharmaGuard — a production-ready, multi-agent platform for pharmaceutical similarity detection using Google Gemini, LangChain, FAISS, and FastAPI. On the analytics side, I build reusable ETL and machine-learning workflows that turn raw, multi-source data into anomaly detection, risk scoring, and decision-ready dashboards. I work across Python, SQL, R, and the modern AI stack, and I’m now focused on bringing that toolkit into banking and financial services.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===== SKILLS ===== -->
-    <section id="skills" class="container reveal">
-      <div class="card skills-card">
-        <p class="eyebrow">Toolkit</p>
-        <h2>Skills</h2>
-        <div class="skills-groups">
-          <div class="skill-group">
-            <h3 class="skill-group-title">AI / Machine Learning</h3>
-            <div class="tag-list">
-              <span>Supervised &amp; Unsupervised ML</span>
-              <span>Neural Networks</span>
-              <span>NLP</span>
-              <span>Anomaly / Exception Detection</span>
-              <span>Clustering &amp; Classification</span>
-              <span>Feature Engineering</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-group-title">LLMs &amp; Agents</h3>
-            <div class="tag-list">
-              <span>Google Gemini / LLMs</span>
-              <span>OpenAI</span>
-              <span>LangChain (Agents)</span>
-              <span>RAG / Vector Search (FAISS)</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-group-title">Data &amp; Analytics</h3>
-            <div class="tag-list">
-              <span>ETL / Data Preparation</span>
-              <span>Data Warehousing</span>
-              <span>EDA</span>
-              <span>Statistical Analysis</span>
-              <span>Power BI</span>
-              <span>Tableau</span>
-              <span>Excel (Pivots / Macros)</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-group-title">Languages &amp; Web</h3>
-            <div class="tag-list">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>R</span>
-              <span>Next.js / TypeScript</span>
-              <span>HTML</span>
-              <span>CSS</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-group-title">Backend &amp; Tools</h3>
-            <div class="tag-list">
-              <span>FastAPI</span>
-              <span>Django</span>
-              <span>PostgreSQL</span>
-              <span>SQLite</span>
-              <span>Git</span>
-              <span>Docker</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== EXPERIENCE ===== -->
-    <section id="experience" class="container reveal">
-      <div class="card">
-        <p class="eyebrow">Career</p>
-        <h2>Experience</h2>
-        <div class="experience-item">
-          <h3>AI/ML Engineer | DataInno Analytics</h3>
-          <span class="experience-date">02/2026 - 07/2026</span>
-          <ul>
-            <li>Built AI Concierge, an agentic hospitality assistant, using LangChain (tools/agents), OpenAI, and a vector
-                database (Pinecone/PostgreSQL) with RAG to ground responses and reduce hallucinations.</li>
-            <li>Engineered LangChain tools that call backend APIs to check availability, process bookings, update room
-                inventory, and log guest interactions — automating end-to-end reservation workflows.</li>
-            <li>Integrated the assistant across multiple channels (WhatsApp, Telegram, and web) with intent classification,
-                entity extraction, and context retention for natural, multi-turn conversations.</li>
-            <li>Designed an analytics layer surfacing guest-satisfaction sentiment, chat-to-booking conversion, upsell
-                revenue, and peak-demand trends to give hotel management actionable, real-time insight.
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>AI Engineering Bootcamp | HyperionDev</h3>
-          <span class="experience-date">02/2025 – 01/2026</span>
-          <ul>
-            <li>Developed multiple AI-driven applications, including backend services using Python, demonstrating practical AI engineering capabilities.</li>
-            <li>Applied supervised and unsupervised machine learning models, neural networks, and NLP techniques to solve real-world problems.</li>
-            <li>Utilised Git and GitHub for version control across all projects, enabling collaborative coding and structured project workflows.</li>
-            <li>Designed and implemented five end-to-end projects, producing functional applications that integrate data processing, analytics, and predictive modelling.</li>
-            <li>Developed a full-stack Django web application, integrating front-end interfaces, back-end logic, and database architecture to deliver a functional, end-to-end web solution.</li>
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>Pharmacy Technician | Nelson Mandela Children's Hospital</h3>
-          <span class="experience-date">Jul 2023 – Present</span>
-          <ul>
-            <li>Maintain accurate electronic records and inventory data, ensuring data integrity for reporting and audits in a regulated environment.</li>
-            <li>Operate within strict regulatory standards, contributing to control adherence and control effectiveness in a high-volume dispensary.</li>
-            <li>Monitor stock and consumption data to detect exceptions and anomalies, supporting formulary and stock-control decisions.</li>
-            <li>Analyse workflow data to drive process improvements; collaborate across technical and non-technical stakeholders (doctors, nurses, pharmacists).</li>
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>Pharmacy Technician | Local Choice Pelican Pharmacy</h3>
-          <span class="experience-date">Jan 2022 – Jun 2023</span>
-          <ul>
-            <li>Ensured accurate data entry, record-keeping, and data integrity across dispensary operations while maintaining regulatory compliance.</li>
-            <li>Monitored stock trends to flag exceptions and reduced dispensing errors through process improvements.</li>
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>Pharmacy Technician Intern | Prince Mshiyeni Memorial Hospital</h3>
-          <span class="experience-date">Apr 2021 – Nov 2021</span>
-          <ul>
-            <li>Monitored inventory levels and prepared reporting to support audits and regulatory compliance.</li>
-            <li>Documented patient and stock data accurately; collaborated with healthcare staff to optimise medication processes.</li>
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>Lab Assistant (Volunteer) | Nelson Mandela University</h3>
-          <span class="experience-date">2019</span>
-          <ul>
-            <li>Collected, recorded, and analysed production data to identify efficiency improvements.</li>
-            <li>Performed quality-control checks to ensure compliance with safety and quality standards in regulated manufacturing.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects" class="container reveal">
-      <div class="card">
-        <p class="eyebrow">Selected work</p>
-        <h2>Projects</h2>
-        <p>A mix of ML systems, AI tooling, and production applications — each one built end to end.</p>
-
-        <div class="now-building">
-          <span class="now-tag"><span class="now-dot" aria-hidden="true"></span>Currently building</span>
-          <h3>AI Concierge — Agentic Hospitality Assistant</h3>
-          <p>
-            An agentic assistant for hotels that answers guest enquiries and runs operational tasks — checking room availability, processing bookings, updating inventory, and surfacing policy and FAQ answers. LangChain tools call backend services through APIs, while RAG vector search over hotel documents keeps responses grounded and reduces hallucinations.
+  <!-- ══════════ 00 · WHO, WHAT, WHERE — no ambiguity ══════════ -->
+  <section class="sc-section" data-sc-act="flow">
+    <div class="sc-wrap hero">
+      <div class="hero__inner">
+        <div data-sc-in data-sc-stagger="80">
+          <h1 class="hero__name">Senzo Ncekana</h1>
+          <p class="hero__role">AI Engineer — Agentic AI, LLMs &amp; Backend Systems</p>
+          <p class="hero__summary">
+            I build practical, production-minded AI systems — <strong>agentic
+            assistants</strong>, <strong>RAG pipelines</strong>, and the
+            <strong>Python backends</strong> behind them. Five years in
+            regulated healthcare before this, which is where the habits came
+            from: data integrity, documentation, and systems that can be
+            audited.
           </p>
-          <div class="project-tags">
-            <span>LangChain</span>
-            <span>OpenAI</span>
-            <span>RAG</span>
-            <span>Pinecone</span>
-            <span>PostgreSQL</span>
-            <span>Agents</span>
+          <p class="hero__where">Parktown, Johannesburg, Gauteng · Open to AI engineering roles</p>
+          <div class="hero__actions">
+            <a class="action" href="cv_preview.pdf" download="Senzo Ncekana - CV.pdf">Download CV</a>
+            <a class="action" href="mailto:senzo.ncekana1@gmail.com">Email me</a>
+            <a class="action action--quiet" href="https://github.com/SENZO-NCEKANA" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="action action--quiet" href="https://www.linkedin.com/in/nelson-ncekana-4026a1241" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <figure class="hero__portrait" data-sc-in>
+          <img src="assets/portrait.webp" width="880" height="1174" alt="Senzo Ncekana" fetchpriority="high">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 01 · WHAT I BUILD ══════════ -->
+  <section data-sc-act="pin" data-sc-span="2.4" id="ch1">
+    <div data-sc-stage>
+      <div class="sc-wrap" style="display:grid;align-content:center;min-height:100svh;padding-block:var(--sc-9)">
+        <p class="chapter-mark" data-sc-cue="0">What I build</p>
+        <h2 class="chapter-title" data-sc-cue="0">Three things, end to end.</h2>
+        <div class="pillars">
+          <div class="pillar" data-sc-cue="0.1">
+            <h3>Agentic assistants</h3>
+            <p>LangChain agents and tools that call real backend APIs — checking availability, processing bookings, updating inventory — rather than just answering questions.</p>
+            <p class="pillar__stack"><span>LangChain</span><span>OpenAI</span><span>Gemini</span><span>Agents</span></p>
+          </div>
+          <div class="pillar" data-sc-cue="0.24">
+            <h3>RAG &amp; vector search</h3>
+            <p>Retrieval over a business's own documents so answers are grounded in its data instead of guessed, with the outputs tested and monitored through rollout.</p>
+            <p class="pillar__stack"><span>Pinecone</span><span>FAISS</span><span>pgvector</span><span>spaCy</span></p>
+          </div>
+          <div class="pillar" data-sc-cue="0.38">
+            <h3>Python backends</h3>
+            <p>The services underneath: REST APIs, relational schema design, containers and CI/CD — so a prototype becomes something that can actually be run.</p>
+            <p class="pillar__stack"><span>FastAPI</span><span>Django</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 02 · EXPERIENCE ══════════ -->
+  <section class="sc-section ground--stone" data-sc-act="flow" id="ch2">
+    <div class="sc-wrap">
+      <div data-sc-in data-sc-stagger="60">
+        <p class="chapter-mark">Experience</p>
+        <h2 class="chapter-title">Where the work has been done.</h2>
+        <div class="record">
+
+          <article class="post">
+            <div class="post__meta">
+              <p class="post__date">Feb 2026 – Jul 2026</p>
+              <p class="post__org">Datainno Analytics</p>
+              <p class="post__role">AI/ML Engineer, part-time</p>
+            </div>
+            <div class="post__body"><ul>
+              <li>Built an agentic AI concierge for hotel operations using LangChain tools and agents, OpenAI, and RAG over a Pinecone vector database, grounding responses in business data to reduce hallucinations.</li>
+              <li>Engineered LangChain tools calling backend APIs to check availability, process bookings, update room inventory and log guest interactions — automating end-to-end reservation workflows.</li>
+              <li>Integrated the assistant across WhatsApp, Telegram and web with intent classification, entity extraction and multi-turn context retention; tested, validated and monitored AI outputs through rollout.</li>
+              <li>Built an analytics layer surfacing guest-satisfaction sentiment, chat-to-booking conversion, upsell revenue and peak-demand trends for management decision-making.</li>
+            </ul></div>
+          </article>
+
+          <article class="post">
+            <div class="post__meta">
+              <p class="post__date">Jul 2023 – Present</p>
+              <p class="post__org">Nelson Mandela Children's Hospital</p>
+              <p class="post__role">Pharmacy Technician</p>
+            </div>
+            <div class="post__body"><ul>
+              <li>Maintain accurate electronic records and inventory data in a regulated environment, ensuring data integrity for reporting and audits.</li>
+              <li>Analyse stock and consumption data to detect exceptions and anomalies, supporting formulary and stock-control decisions.</li>
+              <li>Identify and implement workflow improvements in a high-volume dispensary; collaborate with clinical, operational and administrative teams.</li>
+            </ul></div>
+          </article>
+
+          <article class="post">
+            <div class="post__meta">
+              <p class="post__date">Jan 2022 – Jun 2023</p>
+              <p class="post__org">Local Choice Pelican Pharmacy</p>
+              <p class="post__role">Pharmacy Technician</p>
+            </div>
+            <div class="post__body"><ul>
+              <li>Ensured accurate data entry, record-keeping and data integrity across dispensary operations under strict regulatory compliance.</li>
+              <li>Monitored stock trends to flag exceptions and reduced dispensing errors through process improvements.</li>
+            </ul></div>
+          </article>
+
+          <article class="post">
+            <div class="post__meta">
+              <p class="post__date">Apr 2021 – Nov 2021</p>
+              <p class="post__org">Prince Mshiyeni Memorial Hospital</p>
+              <p class="post__role">Pharmacy Technician Intern</p>
+            </div>
+            <div class="post__body"><ul>
+              <li>Monitored inventory levels and prepared reporting to support audits and regulatory compliance; documented patient and stock data accurately.</li>
+            </ul></div>
+          </article>
+
+          <article class="post">
+            <div class="post__meta">
+              <p class="post__date">Jun 2019 – Nov 2019</p>
+              <p class="post__org">Nelson Mandela University</p>
+              <p class="post__role">Lab Assistant, manufacturing</p>
+            </div>
+            <div class="post__body"><ul>
+              <li>Collected, recorded and analysed production data to identify efficiency improvements; performed quality-control checks against safety and quality standards in regulated manufacturing.</li>
+            </ul></div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- The hand-off into the peak. Deliberately NOT inside the pinned act
+           that follows: an image behind the drug names would put media under
+           the one piece of type the whole page depends on being read, and
+           would risk the 4.5:1 floor the harness measures over media. Here it
+           sets the scene, then the typography delivers the payoff. -->
+      <figure class="lead-figure" data-sc-reveal="up" data-sc-reveal-at="0.1 0.5">
+        <img src="assets/cartons.webp" width="1600" height="1066"
+             alt="Two identical unbranded white medicine cartons side by side on a pale surface"
+             loading="lazy" decoding="async">
+        <figcaption>Two cartons. At arm's length, on a high-volume shift, nothing separates them.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══════════ 03 · THE LOOK-ALIKE TEST — THE PEAK ══════════
+       Placed here on purpose. It lands only after the reader already knows
+       who he is and what he builds, so it reads as the origin of PharmaGuard
+       rather than as a riddle at the door. -->
+  <section data-sc-act="pin" data-sc-span="3.4" id="ch3">
+    <div data-sc-stage id="ch3stage" data-sc-verify-state="lasa:0.00">
+      <div class="lasa">
+        <div class="lasa__inner">
+          <p class="chapter-mark" style="text-align:center" data-sc-cue="0">Why PharmaGuard exists</p>
+
+          <div class="lasa__pair" data-sc-cue="0.02">
+            <div class="lasa__word lasa__word--a" id="wordA" aria-label="hydralazine"></div>
+            <div class="lasa__word lasa__word--b" id="wordB" aria-label="hydroxyzine"></div>
+          </div>
+
+          <div class="lasa__gloss" data-sc-cue="0.5">
+            <span><b>hydralazine</b> — lowers blood pressure</span>
+            <span><b>hydroxyzine</b> — an antihistamine</span>
+          </div>
+
+          <p class="lasa__caption" data-sc-cue="0.64">
+            Eleven characters each. They differ in three. In a dispensary at
+            speed, on a handwritten script, that is the whole margin — which is
+            why the industry answer is <b>Tall Man lettering</b>: capitalise the
+            characters that differ, so the eye is forced to see them. Five years
+            of catching that by hand is why I built a system that catches it
+            instead.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 04 · PROJECTS ══════════ -->
+  <section class="sc-section" data-sc-act="flow" id="ch4">
+    <div class="sc-wrap">
+      <div data-sc-in data-sc-stagger="55">
+        <p class="chapter-mark">Projects</p>
+        <h2 class="chapter-title">Built end to end, source public.</h2>
+
+        <div class="figures">
+          <div class="fig">
+            <div class="fig__n" data-sc-count="0 28,000" data-sc-count-at="0.05 0.3">28,000</div>
+            <div class="fig__l">Reviews processed, sentiment pipeline</div>
+          </div>
+          <div class="fig">
+            <div class="fig__n" data-sc-count="0 50" data-sc-count-at="0.07 0.32">50</div>
+            <div class="fig__l">US states clustered, anomaly detection</div>
+          </div>
+          <div class="fig">
+            <div class="fig__n" data-sc-count="0 12" data-sc-count-at="0.09 0.34">12</div>
+            <div class="fig__l">Month AI engineering bootcamp</div>
           </div>
         </div>
 
-        <div class="grid" id="galleryGrid"></div>
+        <div class="catalogue">
+
+          <article class="entry">
+            <p class="entry__mark">AC</p>
+            <div>
+              <h3 class="entry__title">AI Concierge — Agentic Hospitality Assistant</h3>
+              <p class="entry__desc">An agentic assistant for hotel operations: answers guest enquiries and runs real tasks — availability, bookings, inventory, policy answers — across WhatsApp, Telegram and web. LangChain tools call backend APIs, with RAG over Pinecone keeping answers grounded.</p>
+              <p class="entry__tags"><span>LangChain</span><span>OpenAI</span><span>RAG</span><span>Pinecone</span><span>PostgreSQL</span><span>Agents</span></p>
+            </div>
+            <span class="entry__status">Built at Datainno</span>
+          </article>
+
+          <article class="entry">
+            <p class="entry__mark">PG</p>
+            <div>
+              <h3 class="entry__title">PharmaGuard — Similarity Detection &amp; Compliance Platform</h3>
+              <p class="entry__desc">End-to-end platform detecting look-alike / sound-alike risks in drug names and packaging: a multi-agent pipeline with RAG and OCR behind a FastAPI backend and Next.js frontend, containerised with CI/CD.</p>
+              <p class="entry__tags"><span>Python</span><span>FastAPI</span><span>Next.js</span><span>Gemini</span><span>LangChain</span><span>FAISS</span><span>PaddleOCR</span><span>Docker</span></p>
+            </div>
+            <a class="entry__link" href="https://github.com/SENZO-NCEKANA/PharmaGuard" target="_blank" rel="noreferrer">View source →</a>
+          </article>
+
+          <article class="entry">
+            <p class="entry__mark">CC</p>
+            <div>
+              <h3 class="entry__title">Customer Churn — Predictive Risk-Scoring Pipeline</h3>
+              <p class="entry__desc">End-to-end machine learning pipeline — EDA, cleaning, feature engineering, model comparison, ROC-AUC and F1 — scoring churn risk to support targeted retention decisions.</p>
+              <p class="entry__tags"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>XGBoost</span><span>Seaborn</span></p>
+            </div>
+            <a class="entry__link" href="https://github.com/SENZO-NCEKANA/telco-customer-churn-" target="_blank" rel="noreferrer">View source →</a>
+          </article>
+
+          <article class="entry">
+            <p class="entry__mark">SA</p>
+            <div>
+              <h3 class="entry__title">Amazon Review Sentiment — NLP at Scale</h3>
+              <p class="entry__desc">An NLP pipeline over 28,000+ product reviews: preprocessing, polarity classification, sentiment scoring and similarity analysis, in a reproducible documented workflow.</p>
+              <p class="entry__tags"><span>Python</span><span>spaCy</span><span>SpacyTextBlob</span><span>Jupyter</span></p>
+            </div>
+            <a class="entry__link" href="https://github.com/SENZO-NCEKANA/amazon-review-sentiment-analysis" target="_blank" rel="noreferrer">View source →</a>
+          </article>
+
+          <article class="entry">
+            <p class="entry__mark">US</p>
+            <div>
+              <h3 class="entry__title">US Crime Statistics — Pattern &amp; Anomaly Detection</h3>
+              <p class="entry__desc">Segmented a full state-level dataset and detected patterns and outliers using PCA with K-means and hierarchical clustering, with statistical interpretation written for non-technical readers.</p>
+              <p class="entry__tags"><span>Python</span><span>PCA</span><span>scikit-learn</span><span>SciPy</span><span>Seaborn</span></p>
+            </div>
+            <a class="entry__link" href="https://github.com/SENZO-NCEKANA/US-Arrests---Unsupervised-Machine-Learning" target="_blank" rel="noreferrer">View source →</a>
+          </article>
+
+          <article class="entry">
+            <p class="entry__mark">ST</p>
+            <div>
+              <h3 class="entry__title">Shelf Track — Relational Database &amp; Inventory System</h3>
+              <p class="entry__desc">A relational inventory database with full CRUD and search, built around data integrity and usability.</p>
+              <p class="entry__tags"><span>Python</span><span>SQLite</span><span>OOP</span><span>Database design</span></p>
+            </div>
+            <span class="entry__status">Coursework project</span>
+          </article>
+
+          <article class="entry">
+            <p class="entry__mark">DN</p>
+            <div>
+              <h3 class="entry__title">Django News Application</h3>
+              <p class="entry__desc">A news platform with role-based access for readers, journalists and editors, plus subscriptions, email notifications and a REST API. Docker-ready.</p>
+              <p class="entry__tags"><span>Django</span><span>Python</span><span>Docker</span><span>REST API</span></p>
+            </div>
+            <a class="entry__link" href="https://github.com/SENZO-NCEKANA/Django-News-Application" target="_blank" rel="noreferrer">View source →</a>
+          </article>
+
+          <article class="entry">
+            <p class="entry__mark">SC</p>
+            <div>
+              <h3 class="entry__title">Slogan Classifier &amp; Generator</h3>
+              <p class="entry__desc">An LSTM model generating slogans from an industry label and classifying existing slogans across 142 industries.</p>
+              <p class="entry__tags"><span>NLP</span><span>TensorFlow</span><span>LSTM</span><span>spaCy</span></p>
+            </div>
+            <a class="entry__link" href="https://github.com/SENZO-NCEKANA/Slogan-Classifier-and-Generator" target="_blank" rel="noreferrer">View source →</a>
+          </article>
+
+        </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="container reveal">
-      <div class="card contact-card">
-        <p class="eyebrow">Get in touch</p>
-        <h2>Contact</h2>
-        <h3 class="contact-subtitle">Have a project or role in mind? Let’s talk.</h3>
-        <form id="contactForm" class="contact-form" aria-label="Contact form">
-          <input type="text" name="name" placeholder="Enter your name" required autocomplete="name" />
-          <input type="email" name="email" placeholder="Enter your email address" required autocomplete="email" />
-          <textarea name="message" placeholder="Enter your message" required rows="5"></textarea>
-          <button type="submit" class="contact-submit">
-            Submit <span class="btn-icon" aria-hidden="true">✈</span>
-          </button>
-        </form>
+    <!-- ══════════ 05 · SKILLS & CERTIFICATIONS ══════════
+         NOT pinned, and NOT its own act. Two reasons, both found by measuring:
+
+         1. Pinned, it failed. Four dense skill columns plus four qualifications
+            cannot fit one 390x844 viewport, and a pinned act that overflows
+            silently cuts its own content off — the harness measured "Education
+            & certifications" at 1.01:1 on mobile.
+         2. As a separate flow section it sat next to the projects flow act,
+            giving `flow > flow`, which breaks the rule that a page never runs
+            the same device family twice in a row.
+
+         So it lives INSIDE the projects flow act as a full-bleed stone band.
+         One act, two chapters, its own ground — which is what chaptered
+         editorial asks for anyway. -->
+    <div class="ground--stone band" id="ch5">
+      <div class="sc-wrap">
+        <div data-sc-in data-sc-stagger="60">
+        <p class="chapter-mark">Toolkit &amp; qualifications</p>
+        <h2 class="chapter-title">What I work with.</h2>
+        <div class="cols">
+          <div>
+            <h3>AI engineering</h3>
+            <p>LLMs (OpenAI, Google Gemini), LangChain agents &amp; tools, RAG and vector search (Pinecone, FAISS, pgvector), prompt design, NLP with spaCy, applied ML (scikit-learn, XGBoost), neural networks, model evaluation, testing and validation of AI outputs, responsible AI awareness.</p>
+          </div>
+          <div>
+            <h3>Backend engineering</h3>
+            <p>Python, FastAPI, Django, REST API design and integration, relational database design (PostgreSQL, SQLite), SQL, Docker, CI/CD, Git and GitHub, n8n workflow automation, cloud-hosted services.</p>
+          </div>
+          <div>
+            <h3>Data &amp; analytics</h3>
+            <p>pandas, ETL and data preparation, exploratory data analysis, statistical analysis, anomaly and exception detection, Power BI, Tableau, Excel, dashboards and reporting.</p>
+          </div>
+          <div>
+            <h3>Education &amp; certifications</h3>
+            <ul>
+              <li><b>AI Engineering Bootcamp</b><span>HyperionDev · Feb 2025 – Jan 2026</span></li>
+              <li><b>n8n Workflow Automation</b><span>Certification</span></li>
+              <li><b>Machine Learning Fundamentals</b><span>Udemy · 2025 – 2026</span></li>
+              <li><b>Diploma in Pharmacy Technical Support</b><span>Nelson Mandela University · 2017 – 2019</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </section>
-  </main>
+      </div>
+    </div>
+  </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="container muted" style="padding-bottom: 40px;">
-    <p>Designed &amp; Built by Senzo Ncekana</p>
-    <p>© 2026 Senzo Ncekana. All rights reserved.</p>
-  </footer>
+  <!-- ══════════ 06 · COLOPHON ══════════
+       Takes the pin slot the toolkit gave up, which keeps the page alternating
+       flow > pin throughout. Short and fixed-height, so unlike the toolkit it
+       genuinely fits one viewport. Last element on the page. -->
+  <section class="ground--ink" data-sc-act="pin" data-sc-span="1.25" id="ch6">
+    <div data-sc-stage>
+      <div class="sc-wrap colophon">
+        <div style="width:100%">
+        <!-- Cues open at 0 ("greet"): a pinned act whose cues start above 0
+             shows the reader a blank screen for its first frames. -->
+        <p class="chapter-mark" data-sc-cue="0">Get in touch</p>
+        <p class="running" data-sc-cue="0" data-sc-rise="0">
+          If your problem is that something looks correct and is not,
+          <a href="mailto:senzo.ncekana1@gmail.com">write to me</a>.
+        </p>
 
-  <script src="script.js"></script>
+        <dl class="masthead" data-sc-cue="0.08" data-sc-rise="0">
+          <div><dt>Email</dt><dd><a href="mailto:senzo.ncekana1@gmail.com">senzo.ncekana1@gmail.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+27699159102">+27 69 915 9102</a></dd></div>
+          <div><dt>Source</dt><dd><a href="https://github.com/SENZO-NCEKANA" target="_blank" rel="noreferrer">github.com/SENZO-NCEKANA</a></dd></div>
+          <div><dt>Profile</dt><dd><a href="https://www.linkedin.com/in/nelson-ncekana-4026a1241" target="_blank" rel="noreferrer">LinkedIn</a></dd></div>
+          <div><dt>Curriculum vitae</dt><dd><a href="cv_preview.pdf" download="Senzo Ncekana - CV.pdf">Download PDF</a></dd></div>
+        </dl>
+
+        <p class="smallprint" data-sc-cue="0.16" data-sc-rise="0">
+          Senzo Ncekana · Parktown, Johannesburg, Gauteng · Set in Archivo and Source Serif 4
+        </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script>
+(function () {
+  // ─── the look-alike test ─────────────────────────────────────────────
+  // Real ISMP look-alike/sound-alike pair. Identical length (11), differing
+  // only at indices 4,5,6. Nothing is invented: the divergence is a property
+  // of the two real names, and Tall Man lettering is the real mitigation.
+  var A = "hydralazine", B = "hydroxyzine";
+  function paint(el, word, other) {
+    var out = "";
+    for (var i = 0; i < word.length; i++) {
+      out += '<span class="lasa__ch" data-lasa="'
+           + (word[i] === other[i] ? "same" : "diff") + '">' + word[i] + "</span>";
+    }
+    el.innerHTML = out;
+  }
+  paint(document.getElementById("wordA"), A, B);
+  paint(document.getElementById("wordB"), B, A);
+
+  var act = document.getElementById("ch3");
+  var stage = document.getElementById("ch3stage");
+  var lastState = "";
+
+  function tick() {
+    var p = parseFloat(getComputedStyle(act).getPropertyValue("--sc-p")) || 0;
+    var t = (p - 0.14) / 0.38;
+    t = t < 0 ? 0 : t > 1 ? 1 : t;
+    t = t * t * (3 - 2 * t);
+    act.style.setProperty("--lasa", t.toFixed(4));
+
+    // Report the RENDERED separation to the verification harness. It cannot
+    // see a page-local custom property, so without this the signature move
+    // reads as dead scroll. Publish the painted value, never raw progress —
+    // progress changing while the composition is static is the exact failure
+    // this check exists to catch.
+    var state = "lasa:" + t.toFixed(2);
+    if (state !== lastState) {
+      stage.setAttribute("data-sc-verify-state", state);
+      stage.setAttribute("data-sc-verify-hold", (t <= 0.001 || t >= 0.999) ? "true" : "false");
+      lastState = state;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // ─── folio ────────────────────────────────────────────────────────────
+  var marks = [
+    { id: null,  num: "00", title: "Senzo Ncekana", dark: false },
+    { id: "ch1", num: "01", title: "What I build",  dark: false },
+    { id: "ch2", num: "02", title: "Experience",    dark: false },
+    { id: "ch3", num: "03", title: "Why PharmaGuard exists", dark: false },
+    { id: "ch4", num: "04", title: "Projects",      dark: false },
+    { id: "ch5", num: "05", title: "Toolkit",       dark: false },
+    { id: "ch6", num: "06", title: "Get in touch",  dark: true  }
+  ].map(function (m) { return { el: m.id && document.getElementById(m.id), num: m.num, title: m.title, dark: m.dark }; });
+
+  var folio = document.getElementById("folio");
+  var fn = document.getElementById("folioNum");
+  var ft = document.getElementById("folioTitle");
+  var cur_ = null;
+  function updateFolio() {
+    var mid = window.innerHeight * 0.5, cur = marks[0];
+    for (var i = 1; i < marks.length; i++) {
+      if (marks[i].el && marks[i].el.getBoundingClientRect().top <= mid) cur = marks[i];
+    }
+    if (cur === cur_) return;
+    cur_ = cur;
+    fn.textContent = cur.num;
+    ft.textContent = cur.title;
+    folio.classList.toggle("is-dark", cur.dark);
+  }
+  addEventListener("scroll", updateFolio, { passive: true });
+  updateFolio();
+})();
+</script>
+<script>ScrollCraft.mount(document.body);</script>
 </body>
 </html>
