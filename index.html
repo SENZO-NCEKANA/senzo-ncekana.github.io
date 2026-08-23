@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Senzo Ncekana · AI Engineer — Agentic AI, LLMs &amp; Backend Systems</title>
-<meta name="description" content="Senzo Ncekana — AI Engineer in Johannesburg building agentic assistants, RAG pipelines and the Python backends behind them. LangChain, OpenAI, Gemini, FastAPI, Django, Docker.">
+<title>Senzo Nelson Ncekana · AI Engineer — Agentic AI, LLMs &amp; Backend Systems</title>
+<meta name="description" content="Senzo Nelson Ncekana — AI Engineer in Johannesburg building agentic assistants, RAG pipelines and the Python backends behind them. LangChain, OpenAI, Gemini, FastAPI, Django, Docker.">
 <link rel="canonical" href="https://senzo-ncekana.github.io/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23141210'/></svg>">
 
@@ -13,16 +13,16 @@
      common place a job-hunting site loses its first impression. -->
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://senzo-ncekana.github.io/">
-<meta property="og:title" content="Senzo Ncekana — AI Engineer">
+<meta property="og:title" content="Senzo Nelson Ncekana — AI Engineer">
 <meta property="og:description" content="Agentic assistants, RAG pipelines, and the Python backends behind them. Johannesburg, South Africa.">
 <meta property="og:image" content="https://senzo-ncekana.github.io/og-image.png">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
-<meta property="og:image:alt" content="Senzo Ncekana — AI Engineer, Agentic AI, LLMs and Backend Systems">
+<meta property="og:image:alt" content="Senzo Nelson Ncekana — AI Engineer, Agentic AI, LLMs and Backend Systems">
 <meta property="profile:first_name" content="Senzo">
 <meta property="profile:last_name" content="Ncekana">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Senzo Ncekana — AI Engineer">
+<meta name="twitter:title" content="Senzo Nelson Ncekana — AI Engineer">
 <meta name="twitter:description" content="Agentic assistants, RAG pipelines, and the Python backends behind them.">
 <meta name="twitter:image" content="https://senzo-ncekana.github.io/og-image.png">
 
@@ -31,7 +31,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Senzo Ncekana",
+  "name": "Senzo Nelson Ncekana",
   "jobTitle": "AI Engineer",
   "email": "mailto:senzo.ncekana1@gmail.com",
   "telephone": "+27699159102",
@@ -127,7 +127,9 @@
     padding: .4rem .65rem;
     margin: -.4rem -.65rem;
     border-radius: 3px;
-    background: color-mix(in oklab, var(--sc-canvas) 80%, transparent);
+    /* 92%, not 80%. At 80% the large body type on a phone read straight
+       through the chip and the folio looked like a printing error. */
+    background: color-mix(in oklab, var(--sc-canvas) 92%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
@@ -143,7 +145,7 @@
   /* On the dark plate the folio inverts with the ground. Driven by a class from
      JS rather than mix-blend-mode, which is fragile and untestable. */
   .folio.is-dark { color: #A9A296; }
-  .folio.is-dark :is(.folio__chapter, .folio__cv) { background: color-mix(in oklab, #141210 80%, transparent); }
+  .folio.is-dark :is(.folio__chapter, .folio__cv) { background: color-mix(in oklab, #141210 92%, transparent); }
   .folio.is-dark .folio__num { color: #7E9CFF; }
   .folio.is-dark .folio__cv { color: #F4F2ED; border-bottom-color: #7E9CFF; }
   @media (max-width: 700px) {
@@ -210,8 +212,18 @@
   .action:hover, .action:focus-visible { color: var(--sc-accent); }
   .action--quiet { border-bottom-color: color-mix(in oklab, var(--sc-ink) 28%, transparent); color: var(--sc-ink-soft); }
   .action--quiet:hover, .action--quiet:focus-visible { color: var(--sc-ink); border-bottom-color: var(--sc-accent); }
+  /* Depth, per taste.md's five tools — shadow with real offset (light falls
+     downward; a zero-offset halo is decoration), tinted to the canvas hue
+     rather than pure black, which reads as dirt on a warm ground. Plus a 1px
+     edge light, which sells a raised surface better than any amount of blur. */
   .hero__portrait { max-width: 22rem; justify-self: end; width: 100%; }
-  .hero__portrait img { width: 100%; height: auto; display: block; }
+  .hero__portrait img {
+    width: 100%; height: auto; display: block; border-radius: 3px;
+    box-shadow:
+      0 1px 0 color-mix(in oklab, #FFFFFF 55%, transparent) inset,
+      0 2px 4px color-mix(in oklab, #4A4034 12%, transparent),
+      0 14px 34px -10px color-mix(in oklab, #4A4034 30%, transparent);
+  }
   @media (max-width: 900px) {
     .hero__inner { grid-template-columns: 1fr; gap: var(--sc-7); }
     .hero__portrait { max-width: 14rem; justify-self: start; order: -1; }
@@ -261,6 +273,58 @@
     transform: translateY(calc(var(--lasa, 0) * var(--lasa-dir, -1) * .34em));
   }
   .lasa__word--b .lasa__ch[data-lasa="diff"] { --lasa-dir: 1; }
+  .lasa__mark { text-align: center; }
+
+  /* ---- the split cartons ----
+     Two boxes clipped from ONE photograph. Each half is 50% wide with
+     overflow hidden; the <i> inside carries the image at 200% width and is
+     offset so the left half shows the left carton and the right half the
+     right. Driven apart by --lasa, the same value the letters use.
+     Heights are deliberately modest: this sits inside a PINNED stage, and a
+     pinned stage that overflows silently cuts its own content off. */
+  .cartons {
+    margin: clamp(1.2rem, 3vw, 2.2rem) auto 0;
+    width: min(26rem, 72vw);
+    aspect-ratio: 1000 / 494;   /* the asset's own ratio — no vertical guessing */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;           /* keeps the travel from widening the stage */
+  }
+  .cartons__half {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+    will-change: transform;
+    /* Same depth vocabulary as the portrait: real downward offset, tinted to
+       the canvas hue. Without it the boxes read as pasted onto the paper. */
+    box-shadow:
+      0 1px 0 color-mix(in oklab, #FFFFFF 45%, transparent) inset,
+      0 12px 26px -14px color-mix(in oklab, #4A4034 40%, transparent);
+  }
+  /* The asset is pre-cropped to the two box TOPS. The first attempt used the
+     full photograph and showed a mid-band of two faces, which read as abstract
+     texture; the folded flaps are what make them legible as cartons. Cropping
+     once, in the asset, beats fighting background-position at render time. */
+  .cartons__half i {
+    position: absolute; inset: 0;
+    background-image: url("assets/cartons-top.webp");
+    background-size: 200% 100%;
+    display: block;
+  }
+  .cartons__half--l i { background-position-x: 0%; }
+  .cartons__half--r i { background-position-x: 100%; }
+  /* the separation itself */
+  .cartons__half--l { transform: translateX(calc(var(--lasa, 0) * -1.6rem)); }
+  .cartons__half--r { transform: translateX(calc(var(--lasa, 0) *  1.6rem)); }
+
+  /* Reduced motion: no travel, but the distinction must still RESOLVE — the
+     boxes are held at their separated gap rather than animated to it, because
+     the separation is the meaning of the act, not decoration on it. */
+  @media (prefers-reduced-motion: reduce) {
+    .cartons__half--l { transform: translateX(-1.6rem); }
+    .cartons__half--r { transform: translateX(1.6rem); }
+  }
+
   .lasa__gloss {
     margin-top: clamp(1.1rem, 3.4vw, 2.2rem);
     display: grid; gap: .45rem; justify-items: center; text-align: center;
@@ -278,15 +342,6 @@
   .lasa__caption b { color: var(--sc-ink); font-weight: 600; }
 
   /* ---------------- lead figure into the peak ---------------- */
-  .lead-figure { margin: var(--sc-9) auto 0; max-width: 46rem; padding-inline: var(--sc-gutter); }
-  .lead-figure .chapter-mark { margin-bottom: var(--sc-5); }
-  .lead-figure img { width: 100%; height: auto; display: block; }
-  .lead-figure figcaption {
-    margin-top: var(--sc-4);
-    font-family: var(--sc-font-text);
-    font-size: clamp(.95rem, 1.2vw, 1.06rem); line-height: 1.55;
-    color: var(--sc-ink-soft); max-width: 44ch; text-wrap: pretty;
-  }
 
   /* ---------------- the record ---------------- */
   .record { margin-top: var(--sc-7); }
@@ -310,6 +365,109 @@
   }
   .post__body li::marker { color: color-mix(in oklab, var(--sc-ink) 35%, transparent); }
   @media (max-width: 800px) { .post { grid-template-columns: 1fr; gap: var(--sc-3); } }
+
+  /* ---------------- featured: the in-progress build ---------------- */
+  .featured {
+    margin-top: var(--sc-8);
+    padding: var(--sc-7) var(--sc-6) var(--sc-6);
+    border-radius: 3px;
+    background: color-mix(in oklab, var(--sc-ink) 3%, transparent);
+    /* Edge light + a tinted offset shadow, same depth vocabulary as the
+       portrait. Never black on a warm ground — it reads as dirt. */
+    box-shadow:
+      0 1px 0 color-mix(in oklab, #FFFFFF 60%, transparent) inset,
+      0 10px 30px -16px color-mix(in oklab, #4A4034 34%, transparent);
+  }
+  .featured__tag {
+    display: inline-flex; align-items: center; gap: .5rem; margin: 0;
+    font-family: var(--sc-font-display); font-size: .68rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--sc-accent);
+  }
+  .featured__pulse {
+    width: .42rem; height: .42rem; border-radius: 50%; background: currentColor;
+    animation: featured-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes featured-pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+  .featured__title {
+    font-family: var(--sc-font-display); font-weight: 600;
+    font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.24;
+    margin: var(--sc-4) 0 0; color: var(--sc-ink); text-wrap: balance;
+  }
+  .featured__desc, .featured__note {
+    font-family: var(--sc-font-text);
+    font-size: clamp(.98rem, 1.2vw, 1.08rem); line-height: 1.58;
+    color: var(--sc-ink-soft); margin: var(--sc-4) 0 0; max-width: 58ch; text-wrap: pretty;
+  }
+
+  /* ---- the pipeline ----
+     Rail draws left to right, then each node lights in sequence. Both are
+     plain transitions keyed off `.sc-in`, the class the ENGINE already adds
+     when a [data-sc-in] element enters — no extra observer, no second rAF
+     loop, nothing for the scroll harness to trip over. */
+  .flow { margin: var(--sc-7) 0 0; }
+  .flow__rail {
+    list-style: none; margin: 0; padding: 0; position: relative;
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  }
+  .flow__rail::before, .flow__rail::after {
+    content: ""; position: absolute; top: 1.05rem; height: 2px;
+    left: 8%; right: 8%;
+  }
+  .flow__rail::before { background: color-mix(in oklab, var(--sc-ink) 13%, transparent); }
+  .flow__rail::after {
+    background: var(--sc-accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 1.5s cubic-bezier(.22,.61,.36,1) .15s;
+  }
+  .flow.sc-in .flow__rail::after { transform: scaleX(1); }
+
+  .flow__node { display: grid; justify-items: center; gap: .6rem; text-align: center; }
+  .flow__dot {
+    position: relative; z-index: 1;
+    width: 2.1rem; height: 2.1rem; border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: var(--sc-font-display); font-size: .76rem; font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    background: var(--sc-canvas);
+    color: color-mix(in oklab, var(--sc-ink) 45%, transparent);
+    border: 2px solid color-mix(in oklab, var(--sc-ink) 15%, transparent);
+    transition: color .45s ease, border-color .45s ease, box-shadow .45s ease;
+    transition-delay: calc(var(--i) * 200ms + 250ms);
+  }
+  .flow.sc-in .flow__dot {
+    color: var(--sc-accent);
+    border-color: var(--sc-accent);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sc-accent) 10%, transparent);
+  }
+  .flow__label {
+    font-family: var(--sc-font-display); font-size: .68rem; font-weight: 600;
+    letter-spacing: .07em; text-transform: uppercase;
+    color: var(--sc-ink-soft); max-width: 9ch; line-height: 1.35;
+  }
+
+  /* Below ~760px six columns become unreadable slivers. The rail turns
+     vertical and the labels move beside the nodes. */
+  @media (max-width: 760px) {
+    .flow__rail { grid-auto-flow: row; gap: var(--sc-4); }
+    .flow__rail::before, .flow__rail::after {
+      top: 1.05rem; bottom: 1.05rem; height: auto;
+      left: 1rem; right: auto; width: 2px;
+    }
+    .flow__rail::after { transform: scaleY(0); transform-origin: top; }
+    .flow.sc-in .flow__rail::after { transform: scaleY(1); }
+    .flow__node { grid-auto-flow: column; justify-items: start; align-items: center;
+                  grid-template-columns: 2.1rem 1fr; gap: var(--sc-4); text-align: left; }
+    .flow__label { max-width: none; }
+  }
+
+  /* Reduced motion: the sequence is a flourish, not meaning. Show the finished
+     state immediately rather than animating to it. */
+  @media (prefers-reduced-motion: reduce) {
+    .flow__rail::after { transition: none; transform: scaleX(1); }
+    .flow__dot { transition: none; transition-delay: 0s; }
+    .featured__pulse { animation: none; }
+    @media (max-width: 760px) { .flow__rail::after { transform: scaleY(1); } }
+  }
 
   /* ---------------- the catalogue: an index, never a card grid ---------------- */
   .catalogue { margin-top: var(--sc-7); }
@@ -343,6 +501,19 @@
     justify-self: start; white-space: nowrap;
   }
   .entry__link:hover, .entry__link:focus-visible { color: var(--sc-ink); }
+  /* Whole-row response. Only the link reacted before, which left eight rows
+     feeling inert under a cursor — the opposite of what a recruiter scanning
+     the work should feel. Bleeds past the row's own box so the highlight reads
+     as the row lifting, not as a box appearing inside it. */
+  .entry {
+    transition: background-color .18s ease, box-shadow .18s ease;
+    border-radius: 3px;
+  }
+  .entry:hover, .entry:focus-within {
+    background: color-mix(in oklab, var(--sc-ink) 3.5%, transparent);
+    box-shadow: 0 0 0 var(--sc-4) color-mix(in oklab, var(--sc-ink) 3.5%, transparent);
+  }
+  @media (prefers-reduced-motion: reduce) { .entry { transition: none; } }
   .entry__status {
     font-family: var(--sc-font-display); font-size: .67rem; font-weight: 600;
     letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft);
@@ -418,14 +589,18 @@
 <body>
 
 <span data-sc-progress></span>
+<!-- Ships in scrollcraft.css at 4.5% and was simply omitted. taste.md: grain is
+     "the difference between 'a dark page' and 'a lit room'" — a flat ground
+     bands on real displays, and the dark colophon plate is where that shows. -->
+<div class="sc-grain" aria-hidden="true"></div>
 
 <div class="folio" id="folio">
   <span class="folio__chapter">
     <span class="folio__num" id="folioNum">00</span>
     <span class="folio__rule"></span>
-    <span class="folio__title" id="folioTitle">Senzo Ncekana</span>
+    <span class="folio__title" id="folioTitle">Senzo Nelson Ncekana</span>
   </span>
-  <a class="folio__cv" href="cv_preview.pdf" download="Senzo Ncekana - CV.pdf">Download CV</a>
+  <a class="folio__cv" href="cv_preview.pdf" download="Senzo Nelson Ncekana - CV.pdf">Download CV</a>
 </div>
 
 <main id="top">
@@ -435,7 +610,7 @@
     <div class="sc-wrap hero">
       <div class="hero__inner">
         <div data-sc-in data-sc-stagger="80">
-          <h1 class="hero__name">Senzo Ncekana</h1>
+          <h1 class="hero__name">Senzo Nelson Ncekana</h1>
           <!-- "AI Engineer", matching the CV headline and the title, og:title
                and JSON-LD jobTitle on this page. Not "AI/ML Engineer" — that is
                the Datainno job title specifically, and it belongs only in the
@@ -451,14 +626,14 @@
           </p>
           <p class="hero__where">Parktown, Johannesburg, Gauteng · Open to AI engineering roles</p>
           <div class="hero__actions">
-            <a class="action" href="cv_preview.pdf" download="Senzo Ncekana - CV.pdf">Download CV</a>
+            <a class="action" href="cv_preview.pdf" download="Senzo Nelson Ncekana - CV.pdf">Download CV</a>
             <a class="action" href="mailto:senzo.ncekana1@gmail.com">Email me</a>
             <a class="action action--quiet" href="https://github.com/SENZO-NCEKANA" target="_blank" rel="noreferrer">GitHub</a>
             <a class="action action--quiet" href="https://www.linkedin.com/in/nelson-ncekana-4026a1241" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
         <figure class="hero__portrait" data-sc-in>
-          <img src="assets/portrait.webp" width="880" height="1174" alt="Senzo Ncekana" fetchpriority="high">
+          <img src="assets/portrait.webp" width="880" height="1174" alt="Senzo Nelson Ncekana" fetchpriority="high">
         </figure>
       </div>
     </div>
@@ -563,25 +738,6 @@
         </div>
       </div>
 
-      <!-- ══════════ 03 · opens here ══════════
-           This figure OPENS chapter three. It is physically inside the chapter
-           two section for one reason: chapter three is a pinned act, and a
-           pinned stage that overflows its viewport silently cuts its own
-           content off — the failure that measured 1.01:1 on mobile when the
-           toolkit was pinned. A 3:2 image on top of the drug names would do
-           exactly that at 844px, and would also put media under the one piece
-           of type the entire page depends on being read.
-
-           So it flows here, and the folio counts it as chapter three from the
-           moment it appears. To the reader the chapter opens on the
-           photograph; the typography then delivers the payoff. -->
-      <figure class="lead-figure" id="ch3open" data-sc-reveal="up" data-sc-reveal-at="0.1 0.5">
-        <p class="chapter-mark">Chapter three · Why PharmaGuard exists</p>
-        <img src="assets/cartons.webp" width="1600" height="1066"
-             alt="Two identical unbranded white medicine cartons side by side on a pale surface"
-             loading="lazy" decoding="async">
-        <figcaption>Two cartons. At arm's length, on a high-volume shift, nothing separates them.</figcaption>
-      </figure>
     </div>
   </section>
 
@@ -593,13 +749,25 @@
     <div data-sc-stage id="ch3stage" data-sc-verify-state="lasa:0.00">
       <div class="lasa">
         <div class="lasa__inner">
-          <!-- No chapter mark here: the figure above already opened chapter
-               three, and repeating the label would say it twice. The pair
-               opens at 0 so the act never shows a blank first frame. -->
+          <p class="chapter-mark lasa__mark" data-sc-cue="0">Chapter three · Why PharmaGuard exists</p>
+
           <div class="lasa__pair" data-sc-cue="0">
             <div class="lasa__word lasa__word--a" id="wordA" aria-label="hydralazine"></div>
             <div class="lasa__word lasa__word--b" id="wordB" aria-label="hydroxyzine"></div>
           </div>
+
+          <!-- One photograph, split down the seam between the two cartons and
+               driven apart by the SAME --lasa the letters use, so the boxes
+               move the exact amount the characters do, on identical easing.
+               The seam measures at 49.2% of the image width, so a 50/50 split
+               separates the two boxes almost exactly.
+               It sits BELOW the type, never behind it: media under the drug
+               names would put the 4.5:1 floor at risk, and that floor is the
+               reason the peak reads at all. -->
+          <figure class="cartons" data-sc-cue="0.12" aria-label="Two identical unbranded medicine cartons, drawn apart">
+            <span class="cartons__half cartons__half--l"><i></i></span>
+            <span class="cartons__half cartons__half--r"><i></i></span>
+          </figure>
 
           <div class="lasa__gloss" data-sc-cue="0.5">
             <span><b>hydralazine</b> — lowers blood pressure</span>
@@ -640,6 +808,44 @@
             <div class="fig__l">Month AI engineering bootcamp</div>
           </div>
         </div>
+
+        <!-- ══════════ FEATURED · in progress ══════════
+             The pipeline is DRAWN, not screenshotted. The n8n editor is a dark
+             tool UI with 10px labels; dropped on a paper page it is unreadable
+             at any size that fits and fights everything around it. Rebuilding
+             it in the page's own palette keeps the same node names and the same
+             order while reading as made rather than captured.
+
+             It is deliberately quieter than the look-alike test. That is the
+             page's one peak, and a page with two peaks has none — so this gets
+             a rail and a sequence, not a set piece. -->
+        <section class="featured" aria-labelledby="featured-h">
+          <p class="featured__tag"><span class="featured__pulse" aria-hidden="true"></span>Currently building</p>
+          <h3 class="featured__title" id="featured-h">Invoice Automation — an n8n workflow that runs end to end</h3>
+          <p class="featured__desc">
+            An invoice arrives through a form and leaves as a row in Google
+            Sheets and a sent email, with no one retyping anything in between.
+            AI does the reading and structuring; n8n does the moving.
+          </p>
+
+          <figure class="flow" data-sc-in aria-label="Six-step pipeline: form submission, extract from PDF, information extractor, append to Google Sheets, LLM chain, send via Gmail">
+            <ol class="flow__rail">
+              <li class="flow__node" style="--i:0"><span class="flow__dot">1</span><span class="flow__label">Form submission</span></li>
+              <li class="flow__node" style="--i:1"><span class="flow__dot">2</span><span class="flow__label">Extract from PDF</span></li>
+              <li class="flow__node" style="--i:2"><span class="flow__dot">3</span><span class="flow__label">Information extractor</span></li>
+              <li class="flow__node" style="--i:3"><span class="flow__dot">4</span><span class="flow__label">Append to Sheets</span></li>
+              <li class="flow__node" style="--i:4"><span class="flow__dot">5</span><span class="flow__label">LLM chain</span></li>
+              <li class="flow__node" style="--i:5"><span class="flow__dot">6</span><span class="flow__label">Send via Gmail</span></li>
+            </ol>
+          </figure>
+
+          <p class="featured__note">
+            The point was never to use AI. It was to delete the manual data
+            entry — and to build the kind of automation a business actually
+            keeps running.
+          </p>
+          <p class="entry__tags"><span>n8n</span><span>OpenAI</span><span>Information extraction</span><span>Google Sheets</span><span>Gmail API</span><span>Structured output</span></p>
+        </section>
 
         <div class="catalogue">
 
@@ -801,11 +1007,11 @@
           <div><dt>Phone</dt><dd><a href="tel:+27699159102">+27 69 915 9102</a></dd></div>
           <div><dt>Source</dt><dd><a href="https://github.com/SENZO-NCEKANA" target="_blank" rel="noreferrer">github.com/SENZO-NCEKANA</a></dd></div>
           <div><dt>Profile</dt><dd><a href="https://www.linkedin.com/in/nelson-ncekana-4026a1241" target="_blank" rel="noreferrer">LinkedIn</a></dd></div>
-          <div><dt>Curriculum vitae</dt><dd><a href="cv_preview.pdf" download="Senzo Ncekana - CV.pdf">Download PDF</a></dd></div>
+          <div><dt>Curriculum vitae</dt><dd><a href="cv_preview.pdf" download="Senzo Nelson Ncekana - CV.pdf">Download PDF</a></dd></div>
         </dl>
 
         <p class="smallprint">
-          Senzo Ncekana · Parktown, Johannesburg, Gauteng · Set in Archivo and Source Serif 4
+          Senzo Nelson Ncekana · Parktown, Johannesburg, Gauteng · Set in Archivo and Source Serif 4
         </p>
         </div>
       </div>
@@ -849,7 +1055,11 @@
     // reads as dead scroll. Publish the painted value, never raw progress —
     // progress changing while the composition is static is the exact failure
     // this check exists to catch.
-    var state = "lasa:" + t.toFixed(2);
+    // Both the letter separation AND the carton gap, because they are two
+    // painted things driven from one value. Reporting only `lasa` would leave
+    // the photograph's motion invisible to the verifier — the same mistake the
+    // first version of the signature move made.
+    var state = "lasa:" + t.toFixed(2) + " gap:" + (t * 3.2).toFixed(2) + "rem";
     if (state !== lastState) {
       stage.setAttribute("data-sc-verify-state", state);
       stage.setAttribute("data-sc-verify-hold", (t <= 0.001 || t >= 0.999) ? "true" : "false");
@@ -861,13 +1071,9 @@
 
   // ─── folio ────────────────────────────────────────────────────────────
   var marks = [
-    { id: null,  num: "00", title: "Senzo Ncekana", dark: false },
+    { id: null,  num: "00", title: "Senzo Nelson Ncekana", dark: false },
     { id: "ch1", num: "01", title: "What I build",  dark: false },
     { id: "ch2", num: "02", title: "Experience",    dark: false },
-    // The chapter-three figure opens the chapter, so the folio turns over at
-    // the image rather than at the pinned act behind it. Without this the
-    // reader sees the two cartons labelled "02 Experience".
-    { id: "ch3open", num: "03", title: "Why PharmaGuard exists", dark: false },
     { id: "ch3", num: "03", title: "Why PharmaGuard exists", dark: false },
     { id: "ch4", num: "04", title: "Projects",      dark: false },
     { id: "ch5", num: "05", title: "Toolkit",       dark: false },
