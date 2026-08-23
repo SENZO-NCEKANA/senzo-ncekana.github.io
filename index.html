@@ -259,6 +259,7 @@
 
   /* ---------------- lead figure into the peak ---------------- */
   .lead-figure { margin: var(--sc-9) auto 0; max-width: 46rem; padding-inline: var(--sc-gutter); }
+  .lead-figure .chapter-mark { margin-bottom: var(--sc-5); }
   .lead-figure img { width: 100%; height: auto; display: block; }
   .lead-figure figcaption {
     margin-top: var(--sc-4);
@@ -412,7 +413,7 @@
       <div class="hero__inner">
         <div data-sc-in data-sc-stagger="80">
           <h1 class="hero__name">Senzo Ncekana</h1>
-          <p class="hero__role">AI Engineer — Agentic AI, LLMs &amp; Backend Systems</p>
+          <p class="hero__role">AI/ML Engineer — Agentic AI, LLMs &amp; Backend Systems</p>
           <p class="hero__summary">
             I build practical, production-minded AI systems — <strong>agentic
             assistants</strong>, <strong>RAG pipelines</strong>, and the
@@ -535,12 +536,20 @@
         </div>
       </div>
 
-      <!-- The hand-off into the peak. Deliberately NOT inside the pinned act
-           that follows: an image behind the drug names would put media under
-           the one piece of type the whole page depends on being read, and
-           would risk the 4.5:1 floor the harness measures over media. Here it
-           sets the scene, then the typography delivers the payoff. -->
-      <figure class="lead-figure" data-sc-reveal="up" data-sc-reveal-at="0.1 0.5">
+      <!-- ══════════ 03 · opens here ══════════
+           This figure OPENS chapter three. It is physically inside the chapter
+           two section for one reason: chapter three is a pinned act, and a
+           pinned stage that overflows its viewport silently cuts its own
+           content off — the failure that measured 1.01:1 on mobile when the
+           toolkit was pinned. A 3:2 image on top of the drug names would do
+           exactly that at 844px, and would also put media under the one piece
+           of type the entire page depends on being read.
+
+           So it flows here, and the folio counts it as chapter three from the
+           moment it appears. To the reader the chapter opens on the
+           photograph; the typography then delivers the payoff. -->
+      <figure class="lead-figure" id="ch3open" data-sc-reveal="up" data-sc-reveal-at="0.1 0.5">
+        <p class="chapter-mark">Chapter three · Why PharmaGuard exists</p>
         <img src="assets/cartons.webp" width="1600" height="1066"
              alt="Two identical unbranded white medicine cartons side by side on a pale surface"
              loading="lazy" decoding="async">
@@ -557,9 +566,10 @@
     <div data-sc-stage id="ch3stage" data-sc-verify-state="lasa:0.00">
       <div class="lasa">
         <div class="lasa__inner">
-          <p class="chapter-mark" style="text-align:center" data-sc-cue="0">Why PharmaGuard exists</p>
-
-          <div class="lasa__pair" data-sc-cue="0.02">
+          <!-- No chapter mark here: the figure above already opened chapter
+               three, and repeating the label would say it twice. The pair
+               opens at 0 so the act never shows a blank first frame. -->
+          <div class="lasa__pair" data-sc-cue="0">
             <div class="lasa__word lasa__word--a" id="wordA" aria-label="hydralazine"></div>
             <div class="lasa__word lasa__word--b" id="wordB" aria-label="hydroxyzine"></div>
           </div>
@@ -821,6 +831,10 @@
     { id: null,  num: "00", title: "Senzo Ncekana", dark: false },
     { id: "ch1", num: "01", title: "What I build",  dark: false },
     { id: "ch2", num: "02", title: "Experience",    dark: false },
+    // The chapter-three figure opens the chapter, so the folio turns over at
+    // the image rather than at the pinned act behind it. Without this the
+    // reader sees the two cartons labelled "02 Experience".
+    { id: "ch3open", num: "03", title: "Why PharmaGuard exists", dark: false },
     { id: "ch3", num: "03", title: "Why PharmaGuard exists", dark: false },
     { id: "ch4", num: "04", title: "Projects",      dark: false },
     { id: "ch5", num: "05", title: "Toolkit",       dark: false },
