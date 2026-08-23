@@ -82,6 +82,10 @@
      ground without needing its own act. Breaks out of the section's inline
      padding rather than fighting it. */
   .band { padding-block: var(--sc-section); margin-top: var(--sc-section); }
+  /* The band supplies its own bottom padding, and #ch4 adds the section's on
+     top of it. Stacked, they produced ~300px of empty ground before the
+     colophon — half of a dead stretch where the reader scrolls past nothing. */
+  #ch4 { padding-bottom: 0; }
 
   /* Dark colophon plate. A page that hard-cuts between light and dark grounds
      cannot clear 4.5:1 on both with one accent stop, so it carries the
@@ -112,6 +116,21 @@
     color: var(--sc-ink-soft);
     pointer-events: none;
   }
+  /* A fixed folio with no backdrop collides with whatever scrolls beneath it —
+     at the projects chapter it landed on the first entry's shelfmark and title.
+     The chip goes on the two CHILDREN, never on .folio itself: .folio is a
+     full-width flex container, so backing that would paint a full-width bar
+     across the top of the page, which is the fixed nav bar this grammar
+     forbids. Two small chips stay a folio. The negative margin cancels the
+     padding so the optical position is unchanged. */
+  .folio__chapter, .folio__cv {
+    padding: .4rem .65rem;
+    margin: -.4rem -.65rem;
+    border-radius: 3px;
+    background: color-mix(in oklab, var(--sc-canvas) 80%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
   .folio__chapter { display: flex; gap: .7rem; align-items: baseline; min-width: 0; }
   .folio__num { font-variant-numeric: tabular-nums; color: var(--sc-accent); }
   .folio__rule { width: clamp(1rem, 4vw, 3rem); height: 1px; background: currentColor; opacity: .5; flex: none; }
@@ -124,6 +143,7 @@
   /* On the dark plate the folio inverts with the ground. Driven by a class from
      JS rather than mix-blend-mode, which is fragile and untestable. */
   .folio.is-dark { color: #A9A296; }
+  .folio.is-dark :is(.folio__chapter, .folio__cv) { background: color-mix(in oklab, #141210 80%, transparent); }
   .folio.is-dark .folio__num { color: #7E9CFF; }
   .folio.is-dark .folio__cv { color: #F4F2ED; border-bottom-color: #7E9CFF; }
   @media (max-width: 700px) {
@@ -357,7 +377,10 @@
   .fig__l { margin-top: .5rem; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sc-ink-soft); max-width: 15ch; }
 
   /* ---------------- colophon ---------------- */
-  .colophon { min-height: 100svh; display: flex; align-items: center; padding-block: var(--sc-9); }
+  /* Content sits high rather than centred. Centred, it only arrives once the
+     section has fully pinned, so the dark ground swept up the screen a whole
+     viewport ahead of it and the close opened on a blank black frame. */
+  .colophon { min-height: 100svh; display: flex; align-items: flex-start; padding-block: clamp(4rem, 14vh, 9rem); }
   .running {
     font-family: var(--sc-font-text);
     font-size: clamp(1.3rem, 3.2vw, 2.2rem);
@@ -413,7 +436,11 @@
       <div class="hero__inner">
         <div data-sc-in data-sc-stagger="80">
           <h1 class="hero__name">Senzo Ncekana</h1>
-          <p class="hero__role">AI/ML Engineer — Agentic AI, LLMs &amp; Backend Systems</p>
+          <!-- "AI Engineer", matching the CV headline and the title, og:title
+               and JSON-LD jobTitle on this page. Not "AI/ML Engineer" — that is
+               the Datainno job title specifically, and it belongs only in the
+               experience entry below. -->
+          <p class="hero__role">AI Engineer — Agentic AI, LLMs &amp; Backend Systems</p>
           <p class="hero__summary">
             I build practical, production-minded AI systems — <strong>agentic
             assistants</strong>, <strong>RAG pipelines</strong>, and the
@@ -751,19 +778,25 @@
        Takes the pin slot the toolkit gave up, which keeps the page alternating
        flow > pin throughout. Short and fixed-height, so unlike the toolkit it
        genuinely fits one viewport. Last element on the page. -->
-  <section class="ground--ink" data-sc-act="pin" data-sc-span="1.25" id="ch6">
-    <div data-sc-stage>
+  <section class="ground--ink" data-sc-act="pin" data-sc-span="1" id="ch6">
+    <div data-sc-stage data-sc-verify-hold="true">
       <div class="sc-wrap colophon">
         <div style="width:100%">
-        <!-- Cues open at 0 ("greet"): a pinned act whose cues start above 0
-             shows the reader a blank screen for its first frames. -->
-        <p class="chapter-mark" data-sc-cue="0">Get in touch</p>
-        <p class="running" data-sc-cue="0" data-sc-rise="0">
+        <!-- No cues in this act at all. A cue element sits at opacity 0 until
+             its act actually activates, and a pin act only activates once its
+             section reaches the top of the viewport — so the dark ground swept
+             up a full viewport ahead of text that was present but invisible,
+             and the close opened on a blank black screen. The last act wants
+             nothing revealed; it wants to be there when the ground arrives.
+             The stage is marked as a resolved hold so the verifier reads the
+             stillness as authored rather than as dead scroll. -->
+        <p class="chapter-mark">Get in touch</p>
+        <p class="running">
           If your problem is that something looks correct and is not,
           <a href="mailto:senzo.ncekana1@gmail.com">write to me</a>.
         </p>
 
-        <dl class="masthead" data-sc-cue="0.08" data-sc-rise="0">
+        <dl class="masthead">
           <div><dt>Email</dt><dd><a href="mailto:senzo.ncekana1@gmail.com">senzo.ncekana1@gmail.com</a></dd></div>
           <div><dt>Phone</dt><dd><a href="tel:+27699159102">+27 69 915 9102</a></dd></div>
           <div><dt>Source</dt><dd><a href="https://github.com/SENZO-NCEKANA" target="_blank" rel="noreferrer">github.com/SENZO-NCEKANA</a></dd></div>
@@ -771,7 +804,7 @@
           <div><dt>Curriculum vitae</dt><dd><a href="cv_preview.pdf" download="Senzo Ncekana - CV.pdf">Download PDF</a></dd></div>
         </dl>
 
-        <p class="smallprint" data-sc-cue="0.16" data-sc-rise="0">
+        <p class="smallprint">
           Senzo Ncekana · Parktown, Johannesburg, Gauteng · Set in Archivo and Source Serif 4
         </p>
         </div>
@@ -845,16 +878,31 @@
   var fn = document.getElementById("folioNum");
   var ft = document.getElementById("folioTitle");
   var cur_ = null;
+  var dark_ = null;
   function updateFolio() {
+    // Two different thresholds on purpose. The LABEL turns over at the reading
+    // line (viewport middle), which is where a chapter actually begins for the
+    // reader. The DARK state has to turn over at the folio's own line, because
+    // that is what is physically behind the chips — keyed to the middle it
+    // painted dark chips on the light ground for a whole half viewport.
     var mid = window.innerHeight * 0.5, cur = marks[0];
     for (var i = 1; i < marks.length; i++) {
       if (marks[i].el && marks[i].el.getBoundingClientRect().top <= mid) cur = marks[i];
     }
-    if (cur === cur_) return;
-    cur_ = cur;
-    fn.textContent = cur.num;
-    ft.textContent = cur.title;
-    folio.classList.toggle("is-dark", cur.dark);
+    if (cur !== cur_) {
+      cur_ = cur;
+      fn.textContent = cur.num;
+      ft.textContent = cur.title;
+    }
+
+    var line = 64, onDark = false;
+    for (var j = 1; j < marks.length; j++) {
+      if (marks[j].el && marks[j].el.getBoundingClientRect().top <= line) onDark = marks[j].dark;
+    }
+    if (onDark !== dark_) {
+      dark_ = onDark;
+      folio.classList.toggle("is-dark", onDark);
+    }
   }
   addEventListener("scroll", updateFolio, { passive: true });
   updateFolio();
