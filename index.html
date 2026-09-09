@@ -371,6 +371,20 @@
     margin-top: var(--sc-8);
     padding: var(--sc-7) var(--sc-6) var(--sc-6);
     border-radius: 3px;
+    /* Cancel the card's own horizontal padding so its columns land exactly on
+       the catalogue's and let the tint bleed outward instead. Without this the
+       shelfmark sits var(--sc-6) right of the rows' marks and the source link
+       the same distance left of theirs — a visible jog down a column of nine.
+       Reverted below 880px, where --sc-gutter drops to 1.25rem and there is no
+       room to bleed into (and the grid has collapsed anyway). */
+    margin-inline: calc(var(--sc-6) * -1);
+    /* The catalogue's own columns, so the shelfmark, body and source link sit
+       on the same rhythm as the rows below rather than reading as a different
+       component. */
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 12rem);
+    gap: var(--sc-3) var(--sc-6);
+    align-items: start;
     background: color-mix(in oklab, var(--sc-ink) 3%, transparent);
     /* Edge light + a tinted offset shadow, same depth vocabulary as the
        portrait. Never black on a warm ground — it reads as dirt. */
@@ -397,9 +411,6 @@
      so a <strong> here would land at the browser's 700 rather than the 600 the
      display face is set in. */
   .featured__desc strong, .featured__note strong { color: var(--sc-ink); font-weight: 600; }
-  /* .entry__link positions itself with justify-self, which is inert outside the
-     catalogue's grid — in here it needs its own spacing. */
-  .featured__cta { margin: var(--sc-5) 0 0; }
 
   /* ---- the pipeline ----
      Rail draws left to right, then each node lights in sequence. Both are
@@ -522,7 +533,8 @@
   }
   .entry__status::before { content: ""; width: .4rem; height: .4rem; border-radius: 50%; background: var(--sc-accent); flex: none; }
   @media (max-width: 880px) {
-    .entry { grid-template-columns: 2.4rem minmax(0, 1fr); }
+    .entry, .featured { grid-template-columns: 2.4rem minmax(0, 1fr); }
+    .featured { margin-inline: 0; }
     .entry__link, .entry__status { grid-column: 2; }
   }
 
@@ -828,6 +840,8 @@
              a page with two peaks has none. The branch and the split are
              carried in the prose instead of the diagram. -->
         <section class="featured" aria-labelledby="featured-h">
+          <p class="entry__mark">OI</p>
+          <div>
           <p class="featured__tag">Shipped · source public</p>
           <h3 class="featured__title" id="featured-h">Order-to-Invoice Automation — a pipeline built not to trust its own model</h3>
           <p class="featured__desc">
@@ -867,8 +881,9 @@
             person. That is the correct outcome, and the whole reason the
             validation layer exists.
           </p>
-          <p class="featured__cta"><a class="entry__link" href="https://github.com/SENZO-NCEKANA/order-to-invoice-automation" target="_blank" rel="noreferrer">View source →</a></p>
           <p class="entry__tags"><span>n8n</span><span>Ollama</span><span>Gemma 3</span><span>Python</span><span>Google Sheets</span><span>Gmail API</span><span>Docker</span><span>Self-hosted</span></p>
+          </div>
+          <a class="entry__link" href="https://github.com/SENZO-NCEKANA/order-to-invoice-automation" target="_blank" rel="noreferrer">View source →</a>
         </section>
 
         <div class="catalogue">
