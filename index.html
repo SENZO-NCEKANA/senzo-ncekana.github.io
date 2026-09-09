@@ -49,7 +49,7 @@
   "knowsAbout": [
     "Agentic AI", "Large Language Models", "LangChain", "Retrieval-Augmented Generation",
     "Vector search", "Python", "FastAPI", "Django", "PostgreSQL", "Docker",
-    "Machine learning", "Natural language processing"
+    "Machine learning", "Natural language processing", "Workflow automation"
   ],
   "alumniOf": [
     { "@type": "EducationalOrganization", "name": "HyperionDev" },
@@ -383,11 +383,6 @@
     font-family: var(--sc-font-display); font-size: .68rem; font-weight: 600;
     letter-spacing: .14em; text-transform: uppercase; color: var(--sc-accent);
   }
-  .featured__pulse {
-    width: .42rem; height: .42rem; border-radius: 50%; background: currentColor;
-    animation: featured-pulse 2.6s ease-in-out infinite;
-  }
-  @keyframes featured-pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
   .featured__title {
     font-family: var(--sc-font-display); font-weight: 600;
     font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.24;
@@ -398,6 +393,13 @@
     font-size: clamp(.98rem, 1.2vw, 1.08rem); line-height: 1.58;
     color: var(--sc-ink-soft); margin: var(--sc-4) 0 0; max-width: 58ch; text-wrap: pretty;
   }
+  /* The .featured block never had the emphasis rule the rest of the page uses,
+     so a <strong> here would land at the browser's 700 rather than the 600 the
+     display face is set in. */
+  .featured__desc strong, .featured__note strong { color: var(--sc-ink); font-weight: 600; }
+  /* .entry__link positions itself with justify-self, which is inert outside the
+     catalogue's grid — in here it needs its own spacing. */
+  .featured__cta { margin: var(--sc-5) 0 0; }
 
   /* ---- the pipeline ----
      Rail draws left to right, then each node lights in sequence. Both are
@@ -465,7 +467,6 @@
   @media (prefers-reduced-motion: reduce) {
     .flow__rail::after { transition: none; transform: scaleX(1); }
     .flow__dot { transition: none; transition-delay: 0s; }
-    .featured__pulse { animation: none; }
     @media (max-width: 760px) { .flow__rail::after { transform: scaleY(1); } }
   }
 
@@ -807,44 +808,67 @@
             <div class="fig__n" data-sc-count="0 12" data-sc-count-at="0.09 0.34">12</div>
             <div class="fig__l">Month AI engineering bootcamp</div>
           </div>
+          <div class="fig">
+            <div class="fig__n" data-sc-count="0 55" data-sc-count-at="0.11 0.36">55</div>
+            <div class="fig__l">Nodes across two invoicing workflows</div>
+          </div>
         </div>
 
-        <!-- ══════════ FEATURED · in progress ══════════
-             The pipeline is DRAWN, not screenshotted. The n8n editor is a dark
-             tool UI with 10px labels; dropped on a paper page it is unreadable
-             at any size that fits and fights everything around it. Rebuilding
-             it in the page's own palette keeps the same node names and the same
-             order while reading as made rather than captured.
+        <!-- ══════════ FEATURED · shipped ══════════
+             The pipeline is DRAWN, not screenshotted. The repo ships two n8n
+             editor captures, but that editor is a dark tool UI with 10px
+             labels; dropped on a paper page it is unreadable at any size that
+             fits and fights everything around it. Rebuilding it in the page's
+             own palette keeps the real stage names and the real order while
+             reading as made rather than captured.
 
-             It is deliberately quieter than the look-alike test. That is the
-             page's one peak, and a page with two peaks has none — so this gets
-             a rail and a sequence, not a set piece. -->
+             ONE rail, though the system is two workflows and the intake
+             pipeline branches at validation. This block is deliberately
+             quieter than the look-alike test: that is the page's one peak, and
+             a page with two peaks has none. The branch and the split are
+             carried in the prose instead of the diagram. -->
         <section class="featured" aria-labelledby="featured-h">
-          <p class="featured__tag"><span class="featured__pulse" aria-hidden="true"></span>Currently building</p>
-          <h3 class="featured__title" id="featured-h">Invoice Automation — an n8n workflow that runs end to end</h3>
+          <p class="featured__tag">Shipped · source public</p>
+          <h3 class="featured__title" id="featured-h">Order-to-Invoice Automation — a pipeline built not to trust its own model</h3>
           <p class="featured__desc">
-            An invoice arrives through a form and leaves as a row in Google
-            Sheets and a sent email, with no one retyping anything in between.
-            AI does the reading and structuring; n8n does the moving.
+            A purchase order arrives as a PDF attachment and leaves as a
+            numbered tax invoice, held for human approval before it can reach a
+            customer. The model reads the document; nothing downstream takes its
+            word for it. Every figure is recomputed against the order's own
+            arithmetic and checked against the master price list —
+            <strong>what arithmetic can prove, the pipeline repairs; what it
+            cannot, a person decides.</strong>
           </p>
 
-          <figure class="flow" data-sc-in aria-label="Six-step pipeline: form submission, extract from PDF, information extractor, append to Google Sheets, LLM chain, send via Gmail">
+          <figure class="flow" data-sc-in aria-label="Six-stage pipeline: Gmail intake, local model reads the PDF, reconcile arithmetic, validate against master data, reserve number and generate the invoice, human approval">
             <ol class="flow__rail">
-              <li class="flow__node" style="--i:0"><span class="flow__dot">1</span><span class="flow__label">Form submission</span></li>
-              <li class="flow__node" style="--i:1"><span class="flow__dot">2</span><span class="flow__label">Extract from PDF</span></li>
-              <li class="flow__node" style="--i:2"><span class="flow__dot">3</span><span class="flow__label">Information extractor</span></li>
-              <li class="flow__node" style="--i:3"><span class="flow__dot">4</span><span class="flow__label">Append to Sheets</span></li>
-              <li class="flow__node" style="--i:4"><span class="flow__dot">5</span><span class="flow__label">LLM chain</span></li>
-              <li class="flow__node" style="--i:5"><span class="flow__dot">6</span><span class="flow__label">Send via Gmail</span></li>
+              <li class="flow__node" style="--i:0"><span class="flow__dot">1</span><span class="flow__label">Gmail intake</span></li>
+              <li class="flow__node" style="--i:1"><span class="flow__dot">2</span><span class="flow__label">Local model reads</span></li>
+              <li class="flow__node" style="--i:2"><span class="flow__dot">3</span><span class="flow__label">Reconcile arithmetic</span></li>
+              <li class="flow__node" style="--i:3"><span class="flow__dot">4</span><span class="flow__label">Validate master data</span></li>
+              <li class="flow__node" style="--i:4"><span class="flow__dot">5</span><span class="flow__label">Reserve number</span></li>
+              <li class="flow__node" style="--i:5"><span class="flow__dot">6</span><span class="flow__label">Human approval</span></li>
             </ol>
           </figure>
 
           <p class="featured__note">
-            The point was never to use AI. It was to delete the manual data
-            entry — and to build the kind of automation a business actually
-            keeps running.
+            Fifty-five nodes across two workflows that never call each other —
+            intake writes a status, invoicing polls for it, so either can be
+            re-run days later against whatever the sheet says. It is self-hosted
+            end to end: the model is Gemma 3 running locally under Ollama, so no
+            document, order value or customer record reaches a third-party
+            provider.
           </p>
-          <p class="entry__tags"><span>n8n</span><span>OpenAI</span><span>Information extraction</span><span>Google Sheets</span><span>Gmail API</span><span>Structured output</span></p>
+          <p class="featured__note">
+            On a scanned order the model invented two of three unit prices and
+            dropped a leading digit — <strong>R8 424.00 read as R824.00</strong>.
+            All five errors were caught downstream, by the price-list comparison
+            and the subtotal reconciliation, and the order was routed to a
+            person. That is the correct outcome, and the whole reason the
+            validation layer exists.
+          </p>
+          <p class="featured__cta"><a class="entry__link" href="https://github.com/SENZO-NCEKANA/order-to-invoice-automation" target="_blank" rel="noreferrer">View source →</a></p>
+          <p class="entry__tags"><span>n8n</span><span>Ollama</span><span>Gemma 3</span><span>Python</span><span>Google Sheets</span><span>Gmail API</span><span>Docker</span><span>Self-hosted</span></p>
         </section>
 
         <div class="catalogue">
