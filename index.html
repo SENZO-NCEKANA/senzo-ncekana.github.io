@@ -821,72 +821,73 @@
             <div class="fig__l">Month AI engineering bootcamp</div>
           </div>
           <div class="fig">
-            <div class="fig__n" data-sc-count="0 55" data-sc-count-at="0.11 0.36">55</div>
-            <div class="fig__l">Nodes across two invoicing workflows</div>
+            <div class="fig__n" data-sc-count="0 48" data-sc-count-at="0.11 0.36">48</div>
+            <div class="fig__l">Eval cases gating every commit</div>
           </div>
         </div>
 
-        <!-- ══════════ FEATURED · shipped ══════════
-             The pipeline is DRAWN, not screenshotted. The repo ships two n8n
-             editor captures, but that editor is a dark tool UI with 10px
-             labels; dropped on a paper page it is unreadable at any size that
-             fits and fights everything around it. Rebuilding it in the page's
-             own palette keeps the real stage names and the real order while
-             reading as made rather than captured.
+        <!-- ══════════ FEATURED · the measured build ══════════
+             The graph is DRAWN, not screenshotted, for the same reason the
+             invoicing pipeline was: a terminal trace is 10px monospace and
+             fights a paper page at any size that fits. Rebuilding it in the
+             page's own palette keeps the real node names and the real order.
 
-             ONE rail, though the system is two workflows and the intake
-             pipeline branches at validation. This block is deliberately
-             quieter than the look-alike test: that is the page's one peak, and
-             a page with two peaks has none. The branch and the split are
-             carried in the prose instead of the diagram. -->
+             ONE rail, though the graph has a loop: a faulted draft goes back to
+             the answer node once before it is verified again. A rail that forked
+             would compete with the look-alike test, and that is the page's one
+             peak. The loop is carried in the prose instead of the diagram. -->
         <section class="featured" aria-labelledby="featured-h">
-          <p class="entry__mark">OI</p>
+          <p class="entry__mark">KS</p>
           <div>
-          <p class="featured__tag">Shipped · source public</p>
-          <h3 class="featured__title" id="featured-h">Order-to-Invoice Automation — a pipeline built not to trust its own model</h3>
+          <p class="featured__tag">Portfolio build · source public</p>
+          <h3 class="featured__title" id="featured-h">Kestrel Support Agent — safety enforced by the shape of the graph, not the wording of a prompt</h3>
           <p class="featured__desc">
-            A purchase order arrives as a PDF attachment and leaves as a
-            numbered tax invoice, held for human approval before it can reach a
-            customer. The model reads the document; nothing downstream takes its
-            word for it. Every figure is recomputed against the order's own
-            arithmetic and checked against the master price list —
-            <strong>what arithmetic can prove, the pipeline repairs; what it
-            cannot, a person decides.</strong>
+            A support agent for a fictional South African bank, built around the
+            cases that break RAG demos: conflicting limit tables, tickets that
+            must not be answered at all, and text inside a customer's message
+            trying to hijack the reply. A question about a suspicious-transaction
+            report is routed away by triage and never reaches the node that
+            writes answers, so no draft exists to be argued out of —
+            <strong>the rule and the temptation are never in the same place.</strong>
           </p>
 
-          <figure class="flow" data-sc-in aria-label="Six-stage pipeline: Gmail intake, local model reads the PDF, reconcile arithmetic, validate against master data, reserve number and generate the invoice, human approval">
+          <figure class="flow" data-sc-in aria-label="Six-stage graph: triage the ticket, retrieve policy, call account tools, draft the answer, verify it against the retrieved context, then send or escalate to a human">
             <ol class="flow__rail">
-              <li class="flow__node" style="--i:0"><span class="flow__dot">1</span><span class="flow__label">Gmail intake</span></li>
-              <li class="flow__node" style="--i:1"><span class="flow__dot">2</span><span class="flow__label">Local model reads</span></li>
-              <li class="flow__node" style="--i:2"><span class="flow__dot">3</span><span class="flow__label">Reconcile arithmetic</span></li>
-              <li class="flow__node" style="--i:3"><span class="flow__dot">4</span><span class="flow__label">Validate master data</span></li>
-              <li class="flow__node" style="--i:4"><span class="flow__dot">5</span><span class="flow__label">Reserve number</span></li>
-              <li class="flow__node" style="--i:5"><span class="flow__dot">6</span><span class="flow__label">Human approval</span></li>
+              <li class="flow__node" style="--i:0"><span class="flow__dot">1</span><span class="flow__label">Triage</span></li>
+              <li class="flow__node" style="--i:1"><span class="flow__dot">2</span><span class="flow__label">Retrieve policy</span></li>
+              <li class="flow__node" style="--i:2"><span class="flow__dot">3</span><span class="flow__label">Account tools</span></li>
+              <li class="flow__node" style="--i:3"><span class="flow__dot">4</span><span class="flow__label">Draft</span></li>
+              <li class="flow__node" style="--i:4"><span class="flow__dot">5</span><span class="flow__label">Verify</span></li>
+              <li class="flow__node" style="--i:5"><span class="flow__dot">6</span><span class="flow__label">Send or escalate</span></li>
             </ol>
           </figure>
 
           <p class="featured__note">
-            Fifty-five nodes across two workflows that never call each other —
-            intake writes a status, invoicing polls for it, so either can be
-            re-run days later against whatever the sheet says. It is self-hosted
-            end to end: the model is Gemma 3 running locally under Ollama, so no
-            document, order value or customer record reaches a third-party
-            provider.
+            Fourteen measured runs, each testing exactly one change and reported
+            beside the ones before it. Routing accuracy went from 58.3% to 89.6%
+            and answered tickets from at most ten to twenty-five of thirty-two,
+            with no forbidden reply emitted in any run. One run put an
+            irreversible card block on a ticket that never asked for one —
+            <strong>the eval's own gate failed that run, and the next put it back
+            to zero.</strong> Both are in the README, beside everything that
+            worked.
           </p>
-          <p class="featured__note">
-            On a scanned order the model invented two of three unit prices and
-            dropped a leading digit — <strong>R8 424.00 read as R824.00</strong>.
-            All five errors were caught downstream, by the price-list comparison
-            and the subtotal reconciliation, and the order was routed to a
-            person. That is the correct outcome, and the whole reason the
-            validation layer exists.
-          </p>
-          <p class="entry__tags"><span>n8n</span><span>Ollama</span><span>Gemma 3</span><span>Python</span><span>Google Sheets</span><span>Gmail API</span><span>Docker</span><span>Self-hosted</span></p>
+          <p class="entry__tags"><span>Python</span><span>LangGraph</span><span>RAG</span><span>BM25 + dense</span><span>OpenAI</span><span>Prompt-injection defence</span><span>pytest</span><span>GitHub Actions</span></p>
           </div>
-          <a class="entry__link" href="https://github.com/SENZO-NCEKANA/order-to-invoice-automation" target="_blank" rel="noreferrer">View source →</a>
+          <a class="entry__link" href="https://github.com/SENZO-NCEKANA/kestrel-support-agent" target="_blank" rel="noreferrer">View source →</a>
         </section>
 
         <div class="catalogue">
+
+          <article class="entry">
+            <p class="entry__mark">OI</p>
+            <div>
+              <h3 class="entry__title">Order-to-Invoice Automation — PDF Intake to Numbered Invoice</h3>
+              <p class="entry__desc">A purchase order arrives as a PDF and leaves as a numbered tax invoice, held for human approval before it reaches a customer. A local model reads the document and nothing downstream takes its word for it: every figure is recomputed against the order's arithmetic and checked against the master price list. Self-hosted end to end, so no order value or customer record leaves the machine.</p>
+              <p class="entry__tags"><span>n8n</span><span>Ollama</span><span>Gemma 3</span><span>Python</span><span>Google Sheets</span><span>Gmail API</span><span>Docker</span><span>Self-hosted</span></p>
+            </div>
+            <a class="entry__link" href="https://github.com/SENZO-NCEKANA/order-to-invoice-automation" target="_blank" rel="noreferrer">View source →</a>
+          </article>
 
           <article class="entry">
             <p class="entry__mark">AC</p>

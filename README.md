@@ -17,7 +17,7 @@ by chapter. Static site — no framework, no build step.
 | 01 | What I build | Agentic assistants · RAG & vector search · Python backends |
 | 02 | Experience | Five posts, most recent first |
 | 03 | Why PharmaGuard exists | The look-alike test |
-| 04 | Projects & toolkit | Nine projects, source public, plus skills and certifications |
+| 04 | Projects & toolkit | Ten projects, source public, plus skills and certifications |
 | 05 | Get in touch | Email, phone, CV |
 
 ## The look-alike test
